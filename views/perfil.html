@@ -1,0 +1,133 @@
+<div class="container">
+<div class="content">
+	<!-- Main bar -->
+	<div class="mainbar">
+		<!-- Page heading -->
+		<div class="page-head">
+			<!-- Page heading -->
+			<h2 class="pull-left">Perfil
+			<hr>
+			  <!-- page meta -->
+			  <!-- <span class="page-meta">Something Goes Here</span> -->
+			</h2>
+			<!-- Breadcrumb -->
+			<div class="clearfix"></div>
+		</div><!--/ Page heading ends -->
+		
+		<!-- Matter -->
+		<div class="matter">
+			<div class="container">
+			  <div class="row">
+
+			  	<div class="col-md-4 perfil-doctor">
+					<h2> Dr. Elkin Urango </h2>
+					<img src="images/perfil.jpg" alt="">
+
+					<div class="info-doctor">
+				        <h4>Médico General</h4>
+				        <p>5 Años de experiencia</p>
+
+				        <h4>Biografía</h4>
+				        <p>El tener organizado nuestro tiempo nos hace cada vez más competitivos, sabemos lo importante que es tu salud, por eso hemos ideado una manera para que puedas gestionar tus citas médicas directamente con tu médico favorito, para que puedas seleccionar las fechas en las que necesitas que te revise o incluso programar tratamientos médicos.</p>
+
+				    </div>
+				</div>
+
+				<div class="col-md-8">
+				  <!-- Widget -->
+				  <div class="widget wred">
+					<!-- Widget title -->
+					<div class="widget-head">
+					  <div class="pull-left">Calendario</div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="fa fa-times"></i></a>
+					  </div>
+					  <div class="clearfix"></div>
+					</div>
+					<div class="widget-content">
+					  <!-- Widget content -->
+					  <div class="padd">
+						<!-- Below line produces calendar. I am using FullCalendar plugin. -->
+						<div id="calendar"></div>
+					  </div>
+					</div>
+				  </div> 
+				</div>
+
+			  </div>
+			</div>
+		</div><!--/ Matter ends -->
+	</div> <!--/ Mainbar ends -->
+	<div class="clearfix"></div>
+</div>
+</div>
+
+		<script>
+			/* Calendar */
+			$(document).ready(function() {
+			  var currentLangCode = 'es';
+
+				var date = new Date();
+				var d = date.getDate();
+				var m = date.getMonth();
+				var y = date.getFullYear();
+				
+				$('#calendar').fullCalendar({
+
+				  header: {
+					left: 'prev',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay,next'
+				  },
+				  editable: true,
+				  lang: currentLangCode,
+				  events: [
+					{
+					  title: 'All Day Event',
+					  start: new Date(y, m, 1)
+					},
+					{
+					  title: 'Long Event',
+					  start: new Date(y, m, d-5),
+					  end: new Date(y, m, d-2)
+					},
+					{
+					  id: 999,
+					  title: 'Repeating Event',
+					  start: new Date(y, m, d-3, 16, 0),
+					  allDay: false
+					},
+					{
+					  id: 999,
+					  title: 'Repeating Event',
+					  start: new Date(y, m, d+4, 16, 0),
+					  allDay: false
+					},
+					{
+					  title: 'Meeting',
+					  start: new Date(y, m, d, 10, 30),
+					  allDay: false
+					},
+					{
+					  title: 'Lunch',
+					  start: new Date(y, m, d, 12, 0),
+					  end: new Date(y, m, d, 14, 0),
+					  allDay: false
+					},
+					{
+					  title: 'Birthday Party',
+					  start: new Date(y, m, d+1, 19, 0),
+					  end: new Date(y, m, d+1, 22, 30),
+					  allDay: false
+					},
+					{
+					  title: 'Click for Google',
+					  start: new Date(y, m, 28),
+					  end: new Date(y, m, 29),
+					  url: 'http://google.com/'
+					}
+				  ]
+				});
+			});
+		</script>

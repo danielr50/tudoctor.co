@@ -1,0 +1,90 @@
+<div>
+	<nav class="navbar navbar-default nav-dash">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/home">Tudoctor.co</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     <!--  <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul> -->
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/login">Ingresar</a></li>
+        <li><a href="#/registro">Registrar</a></li>
+
+     <!--    <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+
+
+ <!-- =========================================
+  Map Section
+  ========================================== -->
+<!-- map-section -->
+<div id="map-section">
+  <!-- map -->
+  <div id="map"></div>
+</div><!-- /map-section -->
+
+
+<div class="container doc">
+
+  <div class="doctor col-md-12" ng-repeat="doctor in doctores">
+    <h2> Dr. {{doctor.nombre}} </h2>
+    <div>
+      <img src="images/perfil.jpg" alt="">
+    </div>
+
+    <div class="info-doctor">
+        <h4>{{doctor.especialidad}}</h4>
+        <p>5 Años de experiencia</p>
+
+        <h4>Biografía</h4>
+        <p>{{doctor.biografia}}</p>
+        <!-- <button ng-click="calendar()" class="btn btn-warning btn-lg">Pedir cita</button> -->
+        <a href="#/perfil" class="hvr-shutter-out-vertical button" >Pedir cita</a>
+    </div>
+  </div>
+
+  <div class="doctor col-md-12">
+    <h2> Dr. Elkin Urango </h2>
+    <div>
+      <img src="images/perfil.jpg" alt="">
+    </div>
+
+    <div class="info-doctor">
+        <h4>Médico General</h4>
+        <p>5 Años de experiencia</p>
+
+        <h4>Biografía</h4>
+        <p>El tener organizado nuestro tiempo nos hace cada vez más competitivos, sabemos lo importante que es tu salud, por eso hemos ideado una manera para que puedas gestionar tus citas médicas directamente con tu médico favorito, para que puedas seleccionar las fechas en las que necesitas que te revise o incluso programar tratamientos médicos.</p>
+        <a href="#/perfil" class="hvr-shutter-out-vertical button" >Pedir cita</a>
+    </div>
+  </div>
+
+</div>
+
+<div ng-include="'views/footer.html'"></div>

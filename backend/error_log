@@ -1,0 +1,5 @@
+[17-Apr-2015 09:19:22 America/Chicago] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/oglitpd/public_html/tudoctor.co/backend/doctor.php on line 15
+[13-Jun-2015 10:40:03 America/Chicago] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/oglitpd/public_html/tudoctor.co/backend/paciente.php on line 14
+[13-Jun-2015 10:40:06 America/Chicago] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/oglitpd/public_html/tudoctor.co/backend/paciente.php on line 14
+[13-Jun-2015 10:40:08 America/Chicago] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/oglitpd/public_html/tudoctor.co/backend/paciente.php on line 14
+[13-Jun-2015 10:40:22 America/Chicago] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/oglitpd/public_html/tudoctor.co/backend/paciente.php on line 14

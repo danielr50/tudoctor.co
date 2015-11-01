@@ -1,0 +1,235 @@
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+<script src="lib/tudoctor.js"></script>
+
+<!---- start-smoth-scrolling---->
+        <script type="text/javascript" src="lib/move-top.js"></script>
+        <script type="text/javascript" src="lib/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){     
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+                });
+            });
+        </script>
+    <!---- start-smoth-scrolling---->
+
+<!----//requred-js-files---->
+        <script type="text/javascript"  src="lib/jquery.smint.js"></script>
+        <script type="text/javascript">
+            $(document).ready( function() {
+                $('.subMenu').smint({
+                    'scrollSpeed' : 1000
+                });
+            });
+        </script>
+
+    <!-- <div class="principal" ui-view></div> -->
+    <!---->
+<div class="navigation">
+     <div class="container">
+         <div class="fixed-header">
+             <div class="top-menu">
+                 <ul>
+                     <li class="active"><a class="scroll" href="#home">Home</a></li>
+                     <li><a class="scroll" href="#about">Idea</a></li>
+                     <!-- <li><a class="scroll" href="#gallery">Equipo</a></li> -->
+                     <li><a class="scroll" href="#contact">Contacto</a></li>
+                 </ul>          
+             </div>
+             <div class="right-msg">
+                 <!-- <a class="scroll" href="#"><i class="fa fa-facebook fa-lg sociales"></i></a>
+                 <a class="scroll" href="#"><i class="fa fa-twitter fa-lg sociales"></i></a>
+                 <a class="scroll" href="#"><i class="fa fa-instagram fa-lg sociales"></i></a>
+                 <a class="scroll" href="#"><i class="fa fa-youtube fa-lg sociales"></i></a> -->
+                 <a  href="#/login">Ingresar</a>
+                 <a  href="#/registro">Registrar</a>
+             </div>
+             <div class="clearfix"></div>
+         </div>
+         <script>
+            $("span.menu").click(function(){
+                $(".top-menu ul").slideToggle(500, function(){
+                });
+            });
+            </script>
+
+                <!-- script for menu -->
+                    <script type="text/javascript">
+                    jQuery(document).ready(function($) {
+                        $(".scroll").click(function(event){     
+                            event.preventDefault();
+                            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                        });
+                    });
+                    </script>
+
+                <!-- script for menu -->
+                <script>
+             $(document).ready(function() {
+                 var navoffeset=$(".navigation").offset().top;
+                 $(window).scroll(function(){
+                    var scrollpos=$(window).scrollTop(); 
+                    if(scrollpos >=navoffeset){
+                        $(".navigation").addClass("fixed");
+                    }else{
+                        $(".navigation").removeClass("fixed");
+                    }
+                 });
+                 
+             });
+             </script>
+     </div>
+</div>
+
+
+<!--body-->
+<div id="home" class="banner" ng-controller="HomeCtrl">
+     <div class="container">
+        <div clas="data">
+         <div class="banner-info">
+             <div class="logo">
+                 <!-- <a href="index.html"><img id="portada" src="images/doctorweb.svg" alt=""/></a> -->
+                
+                 <h1>Porque tu salud va primero</h1>
+                 <h2 style="color:#3498DB;">Agenda y gestiona tus citas médicas online</h2>
+             </div>
+            <!--  <h1>Comunidad para emprendedores</h1>
+             <p>Sosmos una comunidad de emprendores imnovadores y creadores de ideas increíbles capaces de cambiar el mundo, cuando haces realmente lo que te apasiona tienes posibilidades de cambiar tu entorno.</p> -->
+             <!-- <a href="#" data-toggle="modal" class="hvr-shutter-out-vertical button" data-target="#doctor">Registro Doctor</a>
+             <a data-toggle="modal" data-target="#paciente" class="hvr-shutter-out-vertical button" href="#">Registro Paciente</a> -->
+                <form ng-submit="filtrar()">
+                    <div id="lugar">
+                        <i class="fa fa-stethoscope"></i><input type="text" placeholder="Especialidad">
+                        <i class="fa fa-user-md"></i><input type="text" placeholder="Doctor">
+                        <i class="fa fa-h-square"></i><input type="text" placeholder="Plan de salud">
+                        <i class="fa fa-map-marker"></i><input type="text" placeholder="¿Dónde estas?">
+                    </div>
+                    <!-- <div id="clinica">
+                    </div>
+                    <div id="especialista">
+                    </div>
+                    <div id="direccion">
+                    </div> -->
+                    <button type="submit">Buscar</button>
+                </form>
+             </div>
+        </div>
+     </div>
+</div>
+
+
+<div id="paciente" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="paciente" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header pacienteModal">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true" >&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Registro de pacientes</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Suscribete para recibir mas información</h4>
+                <br>
+                <form id="frmPaciente">
+                    <div class="control-group">
+                        <label class="control-label">Nombre</label>
+                        <input type="text" name="nombre" class="form-control">
+                    </div>
+    
+                    <div class="control-group">
+                        <label class="control-label">Ciudad</label>
+                        <input type="text" name="ciudad" class="form-control input-small">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <input type="text" name="email" class="form-control input-small">
+                    </div>
+                
+            </div>
+            <div class="modal-footer foterModal">
+                <button type="button" class="btn btn-success" id="registrarPaciente">Registrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <br><br>
+                <div class="respuestaPaciente"></div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!-- FIN Dialogos -->
+
+
+
+<!---->
+<div class="top-grid">
+     <div class="container">
+         <div class="top-grid-section">
+             <div class="col-md-4 top-grids">
+                 <i class="fa fa-user-md fa-4x"></i>
+                 <h3>Doctores especializados</h3>
+                 <p>Contamos con un gran equípo de médicos y especialistas dispuestos a atenderte en lo que necesites, toda tu salud a un solo clic.</p>
+             </div>
+              <div class="col-md-4 top-grids">
+                 <i class="fa fa-calendar fa-4x"></i>
+                 <h3>Programa tus citas</h3>
+                 <p>Programa y gestiona tus citas médicas, toma el control de tu salud y elige un médico para que te atienda en el momento que lo desees.</p>
+             </div>
+             <div class="col-md-4 top-grids">
+                 <i class="fa fa-stethoscope fa-4x"></i>
+                 <h3>Consultas médicas</h3>
+                 <p>Podras realizar consultas médicas simples, con el objetivo de mantener tu salud al día y evitar cualquier sorpresa, solo queremos qe seas felíz.</p>
+             </div>
+             <div class="clearfix"></div>
+         </div>
+     </div>
+</div>
+<!---->
+<div id="about" class="about">
+     <div class="container">
+         <div class="col-md-6 about-pic">
+             <img src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" alt=""/>
+         </div>
+         <div class="col-md-6 about-info">
+             <h3>Gestiona tus citas médicas</h3>
+             <p>El tener organizado nuestro tiempo nos hace cada vez más competitivos, sabemos lo importante que es tu salud, por eso hemos ideado una manera para que puedas gestionar tus citas médicas directamente con tu médico favorito, para que puedas seleccionar las fechas en las que necesitas que te revise o incluso programar tratamientos médicos directamente desde tu computador o smartphone.</p>
+             <a class="hvr-bounce-to-bottom" href="#">Ver doctores</a>
+         </div>
+     </div>
+</div>
+
+<!----start-contact---->
+<div id="contact" class="contact section s4">
+     <div class="container">
+         <h4>Contacto</h4>
+         <p class="contact-head">Si quieres saber más de que se trata todo esto, o si por aguna razón estas interesado en hacer parte de nuestro equipo te invitamos a que nos escribas. </p>
+          <div class="row contact-form">
+                <form>
+                    <div class="col-md-6 text-box">
+                        <input type="text" placeholder="Nombre" />
+                        <input type="text" placeholder="Email" />
+                        <input type="text" placeholder="Tema" />
+                    </div>
+                     <div class="col-md-6 textarea">
+                            <textarea>Mensaje</textarea>
+                      </div>
+                      <div class="clearfix"> </div><br />
+                      <input class="btn-red-lg" type="submit" value="Enviar Mensaje" />
+              </form>
+          </div>
+          <div class="social-media">            
+             <a href="#"><i class="facebook"></i></a>
+             <!-- <a href="#"><i class="pinterest"></i></a> -->
+             <a href="#"><i class="twitter"></i></a>
+             <!-- <a href="#"><i class="google"></i></a> -->
+</div>
+<div class="copy-right">
+        <p>Copyright &#169; 2015 <span>ComunidadUnida</span> All Rights Reserved.</p>
+        <p>Design by<a href="http://oglit.com/">Oglit</a></p>
+</div>
+     </div>
+</div>
