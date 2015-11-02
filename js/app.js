@@ -27,10 +27,20 @@ app.config(function($stateProvider, $urlRouterProvider){
 			templateUrl: 'views/login.html'
 		})
 		
-
 		.state('perfil', {
 			url: '/perfil',
 			templateUrl: 'views/perfil.html'
+		})
+
+		.state('account', {
+			url: '/account',
+			templateUrl: 'views/account.html'
+		})
+
+		.state('cita', {
+			url: '/cita/:fecha',
+			templateUrl: 'views/cita.html',
+			controller: 'citaCtrl'
 		})
 
 		.state('registro',{

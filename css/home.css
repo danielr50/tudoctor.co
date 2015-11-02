@@ -11,6 +11,14 @@
 	width: 120px;
 }
 
+.mainbar .fc-more{
+	color: #d35400;
+}
+
+.panel-cita{
+	margin-top: 21px;
+}
+
 .navbar-default{
 	padding: 0 !important;
 	margin: 0 !important;

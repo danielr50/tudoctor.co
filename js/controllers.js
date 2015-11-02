@@ -12,7 +12,7 @@ app.controller('HomeCtrl', ['$scope', '$location', function($scope, $location){
 
 
 
-app.controller('dashboardCtrl', ['$scope', 'Doctores', function($scope, Doctores){
+app.controller('dashboardCtrl', ['$scope', 'Doctores', '$location', function($scope, Doctores, $location){
 
 	// listado de doctores
 	$scope.doctores = Doctores;
@@ -50,7 +50,8 @@ app.controller('dashboardCtrl', ['$scope', 'Doctores', function($scope, Doctores
 
 
     $scope.calendar = function(){
-    	alert('Aquí muestro el calendario del doctor');
+    	alert('Aquí muestro el perfil y calendario del doctor');
+        $location.path('/perfil');
     }
 
 
@@ -71,8 +72,7 @@ app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', function($scop
           if (error) {
             console.log("Error creating user:", error);
           } else {
-            console.log("Successfully created user account with uid:", userData.uid);
-            
+
             Doctores.$add({
                 nombre: $scope.nombre,
                 especialidad: $scope.especialidad,
@@ -106,6 +106,13 @@ app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', function($scop
           }
         });
     }
+}]);
 
 
+
+// cita
+app.controller('citaCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+    var fecha = $stateParams.fecha;
+    console.log('fecha: ' + fecha);
+    $scope.fecha = fecha;
 }]);

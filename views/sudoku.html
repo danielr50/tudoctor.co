@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SUDOKU</title>
+	
+	<style>
+	body{
+		background-color: #ecf0f1;
+	}
+	table{
+		font-size: 2em;
+	}
+	td{
+		padding: 22px;
+	}
+	input{
+		text-align: center;
+	}
+	hr{
+		border: 1px dashed gray;
+	}
+	h1{
+		color: #16a085;
+		margin-top: 18px;
+	}
+	.footer p{
+		color: #c0392b;
+	}
+</style>
+
+</head>
+<body>
+
+<center>
+	<div class="container">
+		<h1>Juega mi estúpido y sensual Sudoku xD</h1>
+		<hr>
+		<table border="1">
+			<tr>
+				<td><input onchange="observar(this.value, 1)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 2)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 3)" type="text" size="2"></td>
+			</tr>
+			<tr>
+				<td><input onchange="observar(this.value, 4)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 5)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 6)" type="text" size="2"></td>
+			</tr>
+			<tr>
+				<td><input onchange="observar(this.value, 7)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 8)" type="text" size="2"></td>
+				<td><input onchange="observar(this.value, 9)" type="text" size="2"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="footer">
+		<p>Creado por Edwin Gonzalez</p>
+	</div>
+</center>
+
+
+
+<script>
+	// logica del sudoku
+	function observar(valor, posicion){
+
+		// = significa asignacion, ej: numero = 5;
+		// == significa comparacion ej: numero == 4, retorna false
+
+		if (valor != "") {
+			alert('Digitaste el valor: '+valor + ' en la posicion: '+ posicion);
+		}else{
+			alert('Campos vacio');
+		}
+
+
+	}
+
+</script>
+</body>
+</html>
