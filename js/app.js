@@ -1,6 +1,6 @@
 
 // modulo principal de la aplicación
-var app = angular.module('tuDoctor', ['tuDoctor.controllers', 'tuDoctor.services', 'firebase'])
+var app = angular.module('tuDoctor', ['tuDoctor.controllers', 'tuDoctor.calendar', 'tuDoctor.services', 'firebase'])
 
 
 //app.constant('firebaseUrl', 'https://tucocina.firebaseio.com/');
@@ -24,23 +24,40 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 		.state('login', {
 			url: '/login',
-			templateUrl: 'views/login.html'
+			templateUrl: 'views/login.html',
+			controller: 'loginCtrl'
 		})
 		
 		.state('perfil', {
 			url: '/perfil',
-			templateUrl: 'views/perfil.html'
+			templateUrl: 'views/doctor/perfil.html'
 		})
 
 		.state('account', {
 			url: '/account',
-			templateUrl: 'views/account.html'
+			templateUrl: 'views/doctor/account.html'
 		})
 
 		.state('cita', {
 			url: '/cita/:fecha',
 			templateUrl: 'views/cita.html',
 			controller: 'citaCtrl'
+		})
+
+		.state('doctor', {
+			url: '/doctor',
+			templateUrl: 'views/doctor/dashboard.html',
+			controller: 'doctorCtrl'
+		})
+
+		.state('calendar', {
+			url: '/doctor/calendar',
+			templateUrl: 'views/doctor/calendar.html',
+			controller: 'calendarCtrl'
+		})
+		.state('paciente', {
+			url: '/paciente',
+			templateUrl: 'views/paciente/dashboard.html'
 		})
 
 		.state('registro',{

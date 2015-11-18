@@ -1,5 +1,4 @@
-<div>
-	<nav class="navbar navbar-default nav-dash">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -37,53 +36,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-</div>
 
-
- <!-- =========================================
-  Map Section
-  ========================================== -->
-<!-- map-section -->
-<div id="map-section">
-  <!-- map -->
-  <div id="map"></div>
-</div><!-- /map-section -->
-
-
-<div class="container doc">
-
-  <div class="doctor col-md-12" ng-repeat="doctor in doctores">
-    <h2> Dr. {{doctor.nombre}} </h2>
-    <div>
-      <img src="images/perfil.jpg" alt="">
+<div class="container" style="margin-top: 20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Mi cuenta</h3>
     </div>
-
-    <div class="info-doctor">
-        <h4>{{doctor.especialidad}}</h4>
-        <p>5 Años de experiencia</p>
-
-        <h4>Biografía</h4>
-        <p>{{doctor.biografia}}</p>
-        <button ng-click="calendar()" class="btn btn-danger btn-lg">Pedir cita</button>
+    <div class="panel-body">
+      Mi cuenta es una chimba
     </div>
   </div>
-
-  <div class="doctor col-md-12">
-    <h2> Dr. Elkin Urango </h2>
-    <div>
-      <img src="images/perfil.jpg" alt="">
-    </div>
-
-    <div class="info-doctor">
-        <h4>Médico General</h4>
-        <p>5 Años de experiencia</p>
-
-        <h4>Biografía</h4>
-        <p>El tener organizado nuestro tiempo nos hace cada vez más competitivos, sabemos lo importante que es tu salud, por eso hemos ideado una manera para que puedas gestionar tus citas médicas directamente con tu médico favorito, para que puedas seleccionar las fechas en las que necesitas que te revise o incluso programar tratamientos médicos.</p>
-        <button ng-click="calendar()" class="btn btn-danger btn-lg">Pedir cita</button>
-    </div>
-  </div>
-
 </div>
-
-<div ng-include="'views/footer.html'"></div>

@@ -1,0 +1,144 @@
+<div ng-include="'views/doctor/header.html'"></div>
+
+<div class="container doctor-admin">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel de administración</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="row panel-doctor">
+        <div class="col-md-4">
+          <p>Citas</p>
+          <span style="font-size:1em;" class="badge">4</span>
+        </div>
+
+         <div class="col-md-4">
+          <p>Mensajes</p>
+          <span style="font-size:1em;" class="badge">6</span>
+        </div>
+
+         <div class="col-md-4">
+          <p>Mes</p>
+          <span style="font-size:1em;" class="badge">20</span>
+        </div>
+      </div>
+
+      <div class="row data">
+        <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Citas pendientes</div>
+        <div class="panel-body">
+          <p>Muestra el listado de citas ordenadas por fecha, usted puede confirmar o cancelar citas previamente</p>
+        </div>
+
+        
+        <!-- Table -->
+        <table class="table">
+          <thead>
+              <tr style="text-align: center; text-transform: uppercase;">
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Tiempo</th>
+                <th style="text-align: center;">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="fecha-cita">23/11/2015</span></td>
+                <td>Revisión de ojos</td>
+                <td>20 minutos</td>
+                <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
+                <td style="text-align: center;">
+                  <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
+                  <i style="color: #e74c3c;" title="Cancelar cita" class="fa fa-calendar-times-o"></i>
+                </td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td><span class="fecha-cita">23/11/2015</span></td>
+                <td>Revisión de ojos</td>
+                <td>30 minutos</td>
+                <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
+                <td style="text-align: center;">
+                  <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
+                  <i style="color: #e74c3c;" title="Cancelar cita" class="fa fa-calendar-times-o"></i>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- modal -->
+<div id="load_config" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="load_config" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header pacienteModal">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true" >&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Configuración cuenta</h4>
+        </div>
+
+        <div class="modal-body row">
+
+          <div class="col-md-5">
+
+            <form>
+
+              <div class="form-group">
+                <label class="control-label" for="">Hora inicio labores</label>
+                <input ng-model="hora_inicio_labores" class="form-control" type="text" size="4" placeholder="HH:MM">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="">Hora fin labores</label>
+                <input ng-model="hora_fin_labores" class="form-control" type="text" size="4" placeholder="HH:MM">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="">Duración de cada cita</label>
+                <select ng-model="duracion_cita" class="form-control" name="minutos" id="">
+                  <option style="display:none" value="">Seleccione</option>
+                  <option value="15">15 Minutos</option>
+                  <option value="20">20 Minutos</option>
+                  <option value="30">30 Minutos</option>
+                  <option value="40">40 Minutos</option>
+                  <option value="60">1 Hora</option>
+                </select>
+              </div>
+
+            </form>
+
+          </div>
+
+          <div style="text-align:center; font-size:10em;" class="col-md-7">
+            <i><i class="fa fa-stethoscope"></i></i>
+          </div>
+
+        </div>
+          <div class="modal-footer foterModal col-md-row">
+              <button type="button" class="btn btn-default" ng-click="save_horario()">Guardar configuración</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <div class="respuestaPaciente"></div>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div ng-include="'views/footer.html'"></div>
+
+
+
+

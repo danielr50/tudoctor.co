@@ -1,0 +1,46 @@
+.avatar{
+	width: 26px;
+	border-radius: 50%;
+	margin-right: 4px;
+}
+
+.doctor-admin{
+	margin-top: 20px;
+}
+
+.panel-doctor{
+	text-align: center;
+}
+
+.data{
+	padding: 18px;
+}
+.data button{
+	margin-right: 4px;
+}
+
+.data td i{
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.data td i:hover{
+	cursor: pointer;
+}
+
+.data .fecha-cita{
+	padding: 3px;
+	background-color: #16a085;
+	color: #FFF;
+}
+.frm-fechas input{
+	padding: 6px;
+}
+.frm-fechas .hora{
+	padding: 8px !important;
+}
+
+.frm-fechas span{
+	padding-right: 6px;
+	padding-left: 6px;
+}
