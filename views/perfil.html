@@ -1,0 +1,69 @@
+<div ng-include="'views/header.html'"></div>
+
+<div onload="mostrarGoogleMaps()" class="container">
+<div class="content">
+	<!-- Main bar -->
+	<div class="mainbar">
+		<!-- Page heading -->
+		<div class="page-head">
+			<!-- Page heading -->
+			<!-- <h2 class="pull-left">Perfil -->
+			<hr>
+			  <!-- page meta -->
+			  <!-- <span class="page-meta">Something Goes Here</span> -->
+			</h2>
+			<!-- Breadcrumb -->
+			<div class="clearfix"></div>
+		</div><!--/ Page heading ends -->
+		
+		<!-- Matter -->
+		<div class="matter">
+			<div class="container">
+			  <div class="row">
+			  		<div class="row perfil-doctor">
+						<div class="col-md-2"><img src="images/perfil.jpg" alt=""></div>
+						<div class="col-md-6">
+							<h2>Elkin Urango</h2>
+							<p>Profesional de la salud Profesional de la salud  Profesional de la salud </p>
+							<p>Bogotá - Colombia</p>
+							<p>Tel: 795725</p>
+							<!-- <button class=" btn btn-success btn-doctor">Ver calenario</button> -->
+						</div>
+						<div class="col-md-4">
+							<div id="map" style="width: 100%; height: 180px;"></div>
+						</div>
+					</div>
+				</div>
+
+			<div class="row calendario-doctor">
+				<div>
+				  <!-- Widget -->
+				  <div class="widget wblue">
+					<!-- Widget title -->
+					<div class="widget-head">
+					  <div class="pull-left">Calendario del doctor</div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="fa fa-times"></i></a>
+					  </div>
+					  <div class="clearfix"></div>
+					</div>
+					<div class="widget-content">
+					  <!-- Widget content -->
+					  <div class="padd">
+						<!-- Below line produces calendar. I am using FullCalendar plugin. -->
+						<div id="calendar"></div>
+					  </div>
+					</div>
+				  </div> 
+				</div>
+
+			  </div>
+			</div>
+		</div><!--/ Matter ends -->
+	</div> <!--/ Mainbar ends -->
+	<div class="clearfix"></div>
+</div>
+</div>
+
+<div ng-include="'views/footer.html'"></div>

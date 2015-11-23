@@ -1,7 +1,77 @@
-<div ng-include="'views/doctor/header.html'"></div>
+<div ng-include="'views/paciente/header.html'"></div>
 
-<div class="container">
-  <h1>Panel del usuario</h1>
+<div class="container paciente-admin">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel de administración</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="row panel-paciente">
+        <div class="col-md-6">
+          <p>Próximas citas</p>
+          <span style="font-size:1em;" class="badge">4</span>
+        </div>
+
+         <div class="col-md-6">
+          <p>Total citas</p>
+          <span style="font-size:1em;" class="badge">6</span>
+        </div>
+      </div>
+
+      <div class="row data">
+        <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Mi citas programadas</div>
+        <div class="panel-body">
+          <!-- <p>Muestra el listado de citas ordenadas por fecha, usted puede confirmar o cancelar citas previamente</p> -->
+        </div>
+
+        
+        <!-- Table -->
+        <table class="table">
+          <thead>
+              <tr style="text-align: center; text-transform: uppercase;">
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Tiempo</th>
+                <th style="text-align: center;">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="fecha-cita">23/11/2015</span></td>
+                <td>Revisión de ojos</td>
+                <td>20 minutos</td>
+                <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
+                <td style="text-align: center;">
+                  <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
+                  <i style="color: #e74c3c;" title="Cancelar cita" class="fa fa-calendar-times-o"></i>
+                </td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td><span class="fecha-cita">23/11/2015</span></td>
+                <td>Revisión de ojos</td>
+                <td>30 minutos</td>
+                <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
+                <td style="text-align: center;">
+                  <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
+                  <i style="color: #e74c3c;" title="Cancelar cita" class="fa fa-calendar-times-o"></i>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        
+      </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <div ng-include="'views/footer.html'"></div>

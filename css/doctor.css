@@ -44,3 +44,51 @@
 	padding-right: 6px;
 	padding-left: 6px;
 }
+
+/*.perfil-doctor div{
+	display: inline-block;
+	margin: 8px;
+}*/
+
+.perfil-doctor{
+	padding-left: 10px;
+	margin:0;
+	margin-top: 18px;
+}
+
+.btn-calendario{
+	color: #FFF;
+	background-color: #1abc9c;
+	padding: 6px;
+}
+
+.perfil-doctor img{
+	width: 180px;
+	padding: 0;
+	margin: 0;
+	/*margin-bottom: 48px;*/
+}
+
+.btn-doctor{
+	margin-top: 10px;
+}
+
+.filtrar ul li a{
+	color: gray !important;
+}
+
+.calendario-doctor{
+	margin-top: 18px;
+}
+
+.btn_acceso {
+	text-align: center;
+	margin-top: 24px;
+}
+
+.btn_acceso a {
+	color: #FFF;
+	background-color: #c0392b;
+	padding: 12px;
+	margin-left: 10px;
+}

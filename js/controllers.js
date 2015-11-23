@@ -27,6 +27,11 @@ app.controller('HomeCtrl', ['$scope', '$location', 'Auth', '$state', function($s
 		alert('Filtro los datos de tuDoctor');
 		$location.path('/dashboard');
 	}
+
+
+    $scope.ajustes = function(){
+        $('#load_config').modal('show');
+    }
 }]);
 
 
@@ -107,7 +112,7 @@ app.controller('dashboardCtrl', ['$scope', 'Doctores', '$location', function($sc
             mapTypeControl: true,
             center: myLatlng
         };
-        mapElement = document.getElementById('map');
+        mapElement = document.getElementById('mapa_doctor');
         map = new google.maps.Map(mapElement, mapOptions);
         
         marker = new google.maps.Marker({
@@ -186,49 +191,97 @@ app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', function($scop
 
 
 // cita
-app.controller('citaCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', function($scope, $stateParams, $http, Citas){
+
     var fecha = $stateParams.fecha;
+    var hora1 = $stateParams.hora1;
+    var hora2 = $stateParams.hora2;
+    var duracion = $stateParams.duracion;
+
     console.log('fecha: ' + fecha);
     $scope.fecha = fecha;
+    $scope.hora1 = hora1;
+    $scope.hora2 = hora2;
+    $scope.duracion = duracion;
+
+    $scope.send_cita = function(){
+        alert('Hola: ' + $scope.nombre);
+
+        Citas.$add({
+            horario: {
+                fecha: $scope.fecha,
+                horaInicio: $scope.hora1,
+                horaFin: $scope.hora2,
+                duracion: $scope.duracion
+            },
+            nombre: $scope.nombre,
+            telefono: $scope.telefono,
+            email: $scope.email
+        });
+
+        alert('Su cita fue agendada!');
+    }
+
+
 }]);
 
 
-app.controller('doctorCtrl', ['$scope', '$timeout', 'Configuracion', function($scope, $timeout, Configuracion){
-    // $scope.hora_inicio_labores = null;
-     // $scope.config = {};
+app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http', function($scope, $timeout, getConfiguracion, $http){
+    $scope.hora_inicio_labores = null;
+    $scope.hora_fin_labores = null;
+    $scope.duracion_cita = null;
 
-    $scope.config  = Configuracion;
+    getConfiguracion.on('value', function(snapshot){
+        var config = snapshot.val();
+        console.log(config);
 
-    console.log($scope.config);
-    console.log($scope.config.$id);
-    console.log(new Date());
+        if (config != null) {
+            $scope.hora_inicio_labores = config.hora_inicio_labores;
+            $scope.hora_fin_labores = config.hora_fin_labores;
+            $scope.duracion_cita = config.duracion_cita;
+
+
+
+            var f = new Date();
+            var test = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate()+'T'+$scope.hora_inicio_labores+':00';
+            console.log(test);
+            var fecha_atual = new Date(test);
+
+            
+            console.log(fecha_atual.getHours());
+            console.log(fecha_atual.getMinutes());
+
+
+            var fechaI = fecha_atual;
+            var fehaF = $scope.hora_fin_labores+':00 GMT-0500 (COT)';
+
+            console.log('Fecha: ' + fechaI);
+
+
+
+        }else{
+            $timeout(function(){
+                $('#load_config').modal('show');
+            },2000);
+        }
+    });
+
+
+
 
     var inicio = new Date('Wed Nov 18 2015 08:00:00 GMT-0500 (COT)');
-    var fin = new Date('Wed Nov 18 2015 17:00:00 GMT-0500 (COT)');
+    var fin = new Date('Wed Nov 18 2015 12:00:00 GMT-0500 (COT)');
 
-    var transcurso = fin.getTime() - inicio.getTime(); // tiempo en milisegundos
-    var r = transcurso /60;
+    var transcurso = fin.getHours() - inicio.getHours(); 
+    var r = transcurso /1000;
+
+    console.log(inicio.getHours());
+    console.log(fin.getHours());
+
+    console.log('inicio: ' + inicio);
+    console.log('Fin: ' + fin);
     console.log('Tiempo: ' + r);
 
-
-    // count = 1;
-    // calculo el horario del doctor
-    // for (var i = 8; i = 17; i++) {
-    //     console.log(i);
-    //     count++;
-    // }
-
-
-    // $scope.hora_inicio_labores = $scope.confi[0].hora_inicio_labores;
-    // $scope.hora_fin_labores = $scope.confi[0].hora_fin_labores,
-    // $scope.duracion_cita = $scope.confi[0].duracion_cita;
-
-    if ($scope.hora_inicio_labores == null) {
-        $timeout(function(){
-            $('#load_config').modal('show');
-        },2000);
-    }
-   
 
     $scope.save_horario = function(){
 
@@ -238,7 +291,11 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'Configuracion', function($s
             duracion_cita: $scope.duracion_cita
         };
 
-        Configuracion.$add(configuracion);
+        // actualio la configuracion en firebase
+        getConfiguracion.update(configuracion);
+
+        //oculto el modal
+        $('#load_config').modal('hide');
 
     };
 

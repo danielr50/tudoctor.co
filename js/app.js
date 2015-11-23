@@ -30,7 +30,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 		
 		.state('perfil', {
 			url: '/perfil',
-			templateUrl: 'views/doctor/perfil.html'
+			templateUrl: 'views/perfil.html',
+			controller: 'calendarPublicCtrl'
 		})
 
 		.state('account', {
@@ -39,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		})
 
 		.state('cita', {
-			url: '/cita/:fecha',
+			url: '/cita/:fecha/:hora1/:hora2/:duracion',
 			templateUrl: 'views/cita.html',
 			controller: 'citaCtrl'
 		})

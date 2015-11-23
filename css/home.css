@@ -255,3 +255,15 @@ a i{
 .footer p{
 	text-align: center;
 }
+
+
+.doctor-list{
+	margin-top: 20px;
+}
+.doctor-list h1{
+	margin: 0;padding: 0;
+}
+
+.doctor-list hr{
+	border: 1px dotted gray;
+}
