@@ -47,20 +47,23 @@
                  <a class="scroll" href="#"><i class="fa fa-twitter fa-lg sociales"></i></a>
                  <a class="scroll" href="#"><i class="fa fa-instagram fa-lg sociales"></i></a>
                  <a class="scroll" href="#"><i class="fa fa-youtube fa-lg sociales"></i></a> -->
+            <ul class="nav navbar-nav navbar-right">
                  <a ng-if="!verMenu"  href="#/login">Ingresar</a>
                  <a ng-if="!verMenu"  href="#/registro">Registrar</a>
                  <!-- <a ng-if="verMenu" href="">{{authData.password.email}}</a> -->
+    
 
                 <li ng-if="verMenu" class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{authData.password.email}} <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="avatar" ng-src="{{ authData.password.profileImageURL }}" alt=""> {{authData.password.email}} <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Cuenta</a></li>
+                    <li><a ng-click="ajustes()" href="">Ajustes</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a ng-click="logout()" href="">Cerrar sesión</a></li>
                   </ul>
                 </li>
+            </ul>
 
              </div>
              </div>
@@ -121,8 +124,12 @@
                     <div id="lugar">
                         <i class="fa fa-stethoscope"></i><input type="text" placeholder="Especialidad">
                         <i class="fa fa-user-md"></i><input type="text" placeholder="Doctor">
-                        <i class="fa fa-h-square"></i><input type="text" placeholder="Plan de salud">
-                        <i class="fa fa-map-marker"></i><input type="text" placeholder="¿Dónde estas?">
+                        <i class="fa fa-h-square"></i><select name="" id=""  style="background:#FFF;">
+                            <option selected="selected" style=" display: none;">Plan de salud</option>
+                            <option value="">POS</option>
+                            <option value="">POS</option>
+                        </select>
+                        <i class="fa fa-map-marker"></i><input type="text" placeholder="¿Dónde estas?" required title="Es necesario saber tu dirección"><button ng-click="getPosition()" style="background: #ecf0f1; font-size: 0.7em; padding:10px;"><i class="fa fa-location-arrow"></i></button>
                     </div>
                     <!-- <div id="clinica">
                     </div>
@@ -130,6 +137,7 @@
                     </div>
                     <div id="direccion">
                     </div> -->
+
                     <button type="submit">Buscar</button>
                 </form>
              </div>

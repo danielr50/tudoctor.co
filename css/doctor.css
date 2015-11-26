@@ -1,5 +1,5 @@
 .avatar{
-	width: 26px;
+	width: 32px;
 	border-radius: 50%;
 	margin-right: 4px;
 }
@@ -63,7 +63,7 @@
 }
 
 .perfil-doctor img{
-	width: 180px;
+	/*width: 180px;*/
 	padding: 0;
 	margin: 0;
 	/*margin-bottom: 48px;*/

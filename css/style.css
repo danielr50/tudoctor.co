@@ -49,9 +49,14 @@ div#lugar{
 }
 .banner div{
 	display: inline;
+
+}
+.banner div i{
+	font-size: 1.3em;
+	margin-right: 10px;
 }
 
-.banner div form input{
+.banner div form input, select{
 	margin: 0;
 	padding: 10px;
 	border-color: transparent;
