@@ -107,7 +107,7 @@
 
 <!--body-->
 
-     <div class="container">
+     <div class="container" ng-controller="HomeCtrl">
         <div clas="data">
          <div class="banner-info">
              <div class="logo">
@@ -122,14 +122,14 @@
              <a data-toggle="modal" data-target="#paciente" class="hvr-shutter-out-vertical button" href="#">Registro Paciente</a> -->
                 <form ng-submit="filtrar()">
                     <div id="lugar">
-                        <i class="fa fa-stethoscope"></i><input type="text" placeholder="Especialidad">
-                        <i class="fa fa-user-md"></i><input type="text" placeholder="Doctor">
-                        <i class="fa fa-h-square"></i><select name="" id=""  style="background:#FFF;">
+                        <!-- <i class="fa fa-stethoscope"></i> --><input type="text" placeholder="Especialidad">
+                        <!-- <i class="fa fa-user-md"></i> --><input type="text" placeholder="Doctor">
+                        <!-- <i class="fa fa-h-square"></i> --><select name="" id=""  style="background:#FFF;">
                             <option selected="selected" style=" display: none;">Plan de salud</option>
                             <option value="">POS</option>
                             <option value="">POS</option>
                         </select>
-                        <i class="fa fa-map-marker"></i><input type="text" placeholder="¿Dónde estas?" required title="Es necesario saber tu dirección"><button ng-click="getPosition()" style="background: #ecf0f1; font-size: 0.7em; padding:10px;"><i class="fa fa-location-arrow"></i></button>
+                        <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="¿Dónde estas?" required title="Es necesario saber tu dirección"><button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
                     </div>
                     <!-- <div id="clinica">
                     </div>

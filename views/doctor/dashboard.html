@@ -11,7 +11,7 @@
       <div class="row panel-doctor">
         <div class="col-md-4">
           <p>Citas</p>
-          <span style="font-size:1em;" class="badge">4</span>
+          <span style="font-size:1em;" class="badge">{{num_citas}}</span>
         </div>
 
          <div class="col-md-4">
@@ -40,18 +40,22 @@
               <tr style="text-align: center; text-transform: uppercase;">
                 <th>#</th>
                 <th>Fecha</th>
-                <th>Tipo</th>
-                <th>Tiempo</th>
+                <th>Hora</th>
+                <th>Paciente</th>
+                <th>Teléfono</th>
+                <th>Email</th>
                 <th style="text-align: center;">Acciones</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
-                <td>1</td>
-                <td><span class="fecha-cita">23/11/2015</span></td>
-                <td>Revisión de ojos</td>
-                <td>20 minutos</td>
+              <tr ng-repeat="cita in citas">
+                <td>{{$index+1}}</td>
+                <td><span class="fecha-cita">{{cita.horario.fecha}}</span></td>
+                <td>{{cita.horario.horaInicio}}</td>
+                <td>{{cita.nombre}}</td>
+                <td>{{cita.telefono}}</td>
+                <td>{{cita.email}}</td>
                 <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
                 <td style="text-align: center;">
                   <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
@@ -59,17 +63,6 @@
                 </td>
               </tr>
 
-              <tr>
-                <td>2</td>
-                <td><span class="fecha-cita">23/11/2015</span></td>
-                <td>Revisión de ojos</td>
-                <td>30 minutos</td>
-                <!-- <td><button class="btn btn-success">Confirmar</button><button class="btn btn-danger">Cancelar</button></td> -->
-                <td style="text-align: center;">
-                  <i style="color: #2ecc71;" title="Confirmar cita" class="fa fa-calendar-check-o"></i>
-                  <i style="color: #e74c3c;" title="Cancelar cita" class="fa fa-calendar-times-o"></i>
-                </td>
-              </tr>
             </tbody>
         </table>
         

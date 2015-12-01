@@ -17,37 +17,14 @@
 		<h1 class="list">Listado de doctores</h1>
 		<hr>
 
-		<div class="row perfil-doctor">
-			<div class="col-md-2"><img src="images/perfil.jpg" alt=""></div>
+		<div class="row perfil-doctor" ng-repeat="doctor in doctores">
+			<div class="col-md-2"><a href="#/perfil"><img src="images/perfil.jpg" alt=""></a></div>
 			<div class="col-md-10">
-				<h2>Elkin Urango</h2>
-				<p>Profesional de la salud Profesional de la salud  Profesional de la salud </p>
-				<p>Bogotá - Colombia</p>
-				<p style="margin-bottom: 16px;">Tel: 795725</p>
-				<!-- <button class=" btn btn-success btn-doctor">Ver calendario</button> -->
-				<a class="btn-calendario" href="#/perfil">Ver calendario</a>
-			</div>
-		</div>
-
-		<div class="row perfil-doctor">
-			<div class="col-md-2"><img src="images/perfil.jpg" alt=""></div>
-			<div class="col-md-10">
-				<h2>Elkin Urango</h2>
-				<p>Profesional de la salud Profesional de la salud  Profesional de la salud </p>
-				<p>Bogotá - Colombia</p>
-				<p style="margin-bottom: 16px;">Tel: 795725</p>
-				<!-- <button class=" btn btn-success btn-doctor">Ver calendario</button> -->
-				<a class="btn-calendario" href="#/perfil">Ver calendario</a>
-			</div>
-		</div>
-
-		<div class="row perfil-doctor">
-			<div class="col-md-2"><img src="images/perfil.jpg" alt=""></div>
-			<div class="col-md-10">
-				<h2>Elkin Urango</h2>
-				<p>Profesional de la salud Profesional de la salud  Profesional de la salud </p>
-				<p>Bogotá - Colombia</p>
-				<p style="margin-bottom: 16px;">Tel: 795725</p>
+				<a href="#/perfil" style="color:#34495e;"><h2>{{doctor.nombre}}</h2></a>
+				<p>{{doctor.especialidad}}</p>
+				<!-- <p>{{doctor.biografia}}</p> -->
+				<p>{{doctor.ciudad}}</p>
+				<p style="margin-bottom: 16px;">{{doctor.telefono}}</p>
 				<!-- <button class=" btn btn-success btn-doctor">Ver calendario</button> -->
 				<a class="btn-calendario" href="#/perfil">Ver calendario</a>
 			</div>

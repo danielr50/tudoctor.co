@@ -18,7 +18,48 @@ app.controller('HomeCtrl', ['$scope', '$location', 'Auth', '$state', function($s
     });
 
     $scope.getPosition = function(){
-        alert('Aquí obtengo la posición del usuario');
+        // setTimeout(function(){
+        // $scope.$apply(function(){
+        // $scope.origen = '';
+        console.log('Aqui voy');
+            if (navigator.geolocation) {
+            var geocoder = new google.maps.Geocoder();
+            navigator.geolocation.getCurrentPosition(function(position){
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                console.log('LAT: ' + lat + ' LON: ' + lng);
+
+                var latlng = new google.maps.LatLng(lat, lng);
+                geocoder.geocode({'latLng': latlng}, function(results, status){
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            // console.log('Dirección: ' +results[0].formatted_address);
+                            var origen = results[0].formatted_address;
+                            console.log('origen: '+origen);
+
+                            // if ($scope.activo) {
+                            // setTimeout(function(){
+                            //  $scope.$apply(function(){
+                            //      $scope.origen = origen;
+                            //  });
+                            // }, 100);
+                            
+                            $scope.$apply(function(){
+                            $scope.origen = 'Posición actual';
+
+                            });
+
+                        // }else{
+                        //     $scope.$apply(function(){
+                        //     $scope.origen = '';
+
+                        //     });
+                        // }
+                        }
+                    }
+                });
+            });
+        }
     }
 
     $scope.logout = function(){
@@ -29,7 +70,10 @@ app.controller('HomeCtrl', ['$scope', '$location', 'Auth', '$state', function($s
 
 	$scope.filtrar = function(){
 		alert('Filtro los datos de tuDoctor');
-		$location.path('/dashboard');
+        if ($scope.origen != null) {
+		  $location.path('/dashboard');
+
+        }
 	}
 
 
@@ -92,7 +136,6 @@ app.controller('loginCtrl', ['$scope', '$state', function($scope, $state){
           }
         });
    }
-
 }]);
 
 
@@ -142,7 +185,7 @@ app.controller('dashboardCtrl', ['$scope', 'Doctores', '$location', function($sc
 }]);
 
 // controlador de registro de usuarios al sistema
-app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', function($scope, Doctores, Usuarios){
+app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', '$state', function($scope, Doctores, Usuarios, $state){
     $scope.ver_mensaje = false;
 
     // registra doctor
@@ -164,6 +207,23 @@ app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', function($scop
                 biografia: $scope.biografia,
                 idUser: userData.uid
             });
+
+        var ref = new Firebase("https://tudoctor.firebaseio.com");
+        ref.authWithPassword({
+          email    : $scope.email,
+          password : $scope.password
+
+        }, function(error, authData) {
+             if (error) {
+            $scope.err = true;
+            $scope.mensaje = 'Datos incorrectos!';
+
+          } else {
+            console.log("Successfully with:", authData.uid);
+            $state.go('doctor/perfilDoctor');
+        }
+
+        });
 
             $scope.ver_mensaje = true;
             $scope.mensaje = 'Datos guardados correctamente';
@@ -240,7 +300,8 @@ app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos
             },
             nombre: $scope.nombre,
             telefono: $scope.telefono,
-            email: $scope.email
+            email: $scope.email,
+            doctor_id: '-K2xFw_MDovcZZo4zISZ'
         });
 
         alert('Su cita fue agendada!');
@@ -290,6 +351,23 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
     $scope.hora_fin_labores = null;
     $scope.duracion_cita = null;
 
+
+    // traigo las citas pendientes del doctor
+    var count = 0;
+    var citas = [];
+
+    // traigo os datos del usuario que ingreso
+     var citas_doctor = new Firebase("https://tudoctor.firebaseio.com/citas/");
+     citas_doctor.orderByChild("doctor_id").equalTo('-K2xFw_MDovcZZo4zISZ').on("child_added", function(snapshot) {
+        citas[count] = snapshot.val();
+        // config[count].$id = snapshot.key();
+        $scope.citas = citas.filter(Boolean);
+        $scope.num_citas = $scope.citas.length;
+        count++;
+        console.log($scope.citas);
+    });
+
+
     getConfiguracion.on('value', function(snapshot){
         var config = snapshot.val();
         console.log(config);
@@ -336,10 +414,11 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
 
         var hoy = f.getDate();
         var diaSemana = f.getDay();
-        
+        var incremento = 0;
 
         var id_event = 0;
-        for (var j = 0; j <= 4; j++) {
+        for (var j = diaSemana; j <= 5; j++) {
+
             for (var i = hora1; i <= hora2; i++) {
 
                 for (var k = 1; k <= (60/tiempo_cita); k++) {
@@ -351,18 +430,31 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
                     if (i < 10) {
                         i = '0'+i;
                     }
+                    if (hoy < 10) {
+                        eventos.push({
+                          // id: id_event,
+                          title: 'Disponible',
+                          start: fecha_actual+'-'+'0'+(hoy+incremento)+'T'+i+':'+contador,
+                          // end: fecha_actual+i+':'+tiempo_cita,
+                          color: '#16a085',
+                          // allDay: false,
+                          url: 'http://localhost:3000/#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                        });
+                    }else{
 
-                    console.log('Hora: ' +i +':' + contador);
+                        console.log('Hora: ' +i +':' + contador);
 
-                    eventos.push({
-                      // id: id_event,
-                      title: 'Disponible',
-                      start: fecha_actual+'-'+(hoy+j)+'T'+i+':'+contador,
-                      // end: fecha_actual+i+':'+tiempo_cita,
-                      color: '#16a085',
-                      // allDay: false,
-                      url: 'http://localhost:3000/#/cita/' + fecha_actual+'-'+(hoy+j) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
-                    });
+                        eventos.push({
+                          // id: id_event,
+                          title: 'Disponible',
+                          start: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador,
+                          // end: fecha_actual+i+':'+tiempo_cita,
+                          color: '#16a085',
+                          // allDay: false,
+                          url: 'http://localhost:3000/#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                        });
+                        
+                    }
 
                     contador = parseInt(contador);
                     i = parseInt(i);
@@ -378,6 +470,7 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
                 }
                 
             }
+            incremento++;
         } // fin calendario semanal
 
 

@@ -99,6 +99,15 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 	        });
     }
 
+    var f = new Date();
+    var dia = f.getDay();
+    if (dia < 10) {
+    	dia = '0'+dia;
+    }
+    var fecha_actual = f.getFullYear() + "-" + (f.getMonth() +1) + '-' + dia + 'T00:00';
+
+    console.log('fecha_actual: ' + fecha_actual);
+
     // leo los parametros de comfiguracion de la base de datos
     var count = 0;
     var config = [];
@@ -111,7 +120,25 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
         $scope.config = config.filter(Boolean);
         count++;
 
-        console.log($scope.config[0].eventos);
+        // aquí filtro los eventos para mostrar solo las fechas validas
+        // for (var i = 0; i <= $scope.config[0].eventos.length; i++) {
+
+        // 	var fecha = $scope.config[0].eventos[0].start;
+        // 	console.log('FECHA: '+ fecha);
+
+        // 	if (fecha < fecha_actual) {
+
+        // 		$scope.config[0].eventos[i] = {
+        // 			color: '#16a085',
+	       //          start: '0000-00-00T00:00:00',
+	       //          title: 'Vencido',
+	       //          url: '#'
+        // 		};
+
+        // 	}
+        // }
+
+        // console.log($scope.config[0].eventos);
     	
     	// calculo horario del doctor
 		$('#calendar').fullCalendar({
@@ -125,7 +152,7 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 		  defaultView: 'month',
 		  editable: false,
 		  // businessHours: true, // display business hours
-		  // eventLimit: true, // allow "more" link when too many events
+		  eventLimit: true, // allow "more" link when too many events
 
 		  // slotMinutes: 30,
 		  minTime : $scope.config[0].hora_inicio_labores+ ':00',
@@ -137,11 +164,11 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 		  // dragOpacity: "0.5",
 		  // unselectAuto: false,
 		  // weekMode : false,
-		  // businessHours: {
-		  // 	start: $scope.config[0].hora_inicio_labores,
-		  // 	end: $scope.config[0].hora_fin_labores,
-		  // 	dow: [1,2,3,4,5,6]
-		  // },
+		  businessHours: {
+		  	start: $scope.config[0].hora_inicio_labores,
+		  	end: $scope.config[0].hora_fin_labores,
+		  	dow: [1,2,3,4,5]
+		  },
 		  events: function(start, end, timezone, callback){
 		  	callback($scope.config[0].eventos);
 		  }

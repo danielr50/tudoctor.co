@@ -1,6 +1,6 @@
 
 // modulo principal de la aplicación
-var app = angular.module('tuDoctor', ['tuDoctor.controllers', 'tuDoctor.calendar', 'tuDoctor.services', 'firebase'])
+var app = angular.module('tuDoctor', ['tuDoctor.controllers', 'tuDoctor.calendar', 'tuDoctor.services', 'tuDoctor.directives', 'firebase'])
 
 
 //app.constant('firebaseUrl', 'https://tucocina.firebaseio.com/');
@@ -49,6 +49,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			url: '/doctor',
 			templateUrl: 'views/doctor/dashboard.html',
 			controller: 'doctorCtrl'
+		})
+
+		.state('perfilDoctor', {
+			url: '/doctor/perfilDoctor',
+			templateUrl: 'views/doctor/perfil.html'
 		})
 
 		.state('calendar', {

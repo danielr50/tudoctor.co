@@ -53,7 +53,7 @@ div#lugar{
 }
 .banner div i{
 	font-size: 1.3em;
-	margin-right: 10px;
+	/*margin-right: 10px;*/
 }
 
 .banner div form input, select{
