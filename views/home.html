@@ -128,11 +128,11 @@
                 <form ng-submit="filtrar()">
                     <div id="lugar">
                         <!-- <i class="fa fa-stethoscope"></i> --><input type="text" placeholder="Especialidad">
-                        <!-- <i class="fa fa-user-md"></i> --><input type="text" placeholder="Doctor">
+                        <!-- <i class="fa fa-user-md"></i> --><input type="text" placeholder="Nombre doctor" data-provide="typeahead">
                         <!-- <i class="fa fa-h-square"></i> --><select name="" id=""  style="background:#FFF;">
                             <option selected="selected" style=" display: none;">Plan de salud</option>
-                            <option value="">POS</option>
-                            <option value="">POS</option>
+                            <option value="">Colsanitas</option>
+                            <option value="">Suramericana</option>
                         </select>
                         <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="¿Dónde estas?" required title="Es necesario saber tu dirección"><button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
                     </div>
@@ -149,6 +149,12 @@
         </div>
      </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.typeahead').typeahead(['elkin urango', 'pepito perez']);
+    })
+</script>
 
 
 <div id="paciente" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="paciente" aria-hidden="true" >
@@ -286,3 +292,20 @@
           </div>
      </div>
 </div>
+
+
+<script>
+    // function search_doctor(){
+    //   var input=document.getElementById('buscar_doctor').value.toLowerCase();
+    //   var output=document.getElementById('op_doctor').options;
+    //   for(var i=0;i<output.length;i++) {
+    //     if(output[i].value.indexOf(input)==0){
+    //       output[i].selected=true;
+    //       }
+    //     if(document.forms[0].buscar_doctor.value==''){
+    //       output[0].selected=true;
+    //       }
+    //   }
+    // }
+
+</script>
