@@ -128,7 +128,7 @@
                 <form ng-submit="filtrar()">
                     <div id="lugar">
                         <!-- <i class="fa fa-stethoscope"></i> --><input type="text" placeholder="Especialidad">
-                        <!-- <i class="fa fa-user-md"></i> --><input type="text" placeholder="Nombre doctor" data-provide="typeahead">
+                        <!-- <i class="fa fa-user-md"></i> --><input id="buscar" type="text" placeholder="Nombre doctor" data-provide="typeahead">
                         <!-- <i class="fa fa-h-square"></i> --><select name="" id=""  style="background:#FFF;">
                             <option selected="selected" style=" display: none;">Plan de salud</option>
                             <option value="">Colsanitas</option>
@@ -152,7 +152,7 @@
 
 <script>
     $(document).ready(function(){
-        $('.typeahead').typeahead(['elkin urango', 'pepito perez']);
+        $('#buscar').typeahead({source: ['elkin urango', 'pepito perez'], autoSelect:true});
     })
 </script>
 

@@ -268,3 +268,11 @@ a i{
 .doctor-list hr{
 	border: 1px dotted gray;
 }
+
+.typeahead{
+	/*background-color: #ecf0f1 !important;*/
+}
+
+.typeahead li a{
+	color: #2c3e50 !important;
+}
