@@ -438,7 +438,7 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
                           // end: fecha_actual+i+':'+tiempo_cita,
                           color: '#16a085',
                           // allDay: false,
-                          url: 'http://localhost:3000/#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                          url: '#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
                         });
                     }else{
 
@@ -451,7 +451,7 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
                           // end: fecha_actual+i+':'+tiempo_cita,
                           color: '#16a085',
                           // allDay: false,
-                          url: 'http://localhost:3000/#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                          url: '#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
                         });
                         
                     }

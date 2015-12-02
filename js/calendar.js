@@ -104,13 +104,14 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
     if (dia < 10) {
     	dia = '0'+dia;
     }
-    var fecha_actual = f.getFullYear() + "-" + (f.getMonth() +1) + '-' + dia + 'T00:00';
+    var fecha_actual = f.getFullYear() + "-" + (f.getMonth() +1) + '-' + dia + 'T'+ (f.getHours()-1)+':'+f.getMinutes()+":"+f.getSeconds();
 
     console.log('fecha_actual: ' + fecha_actual);
 
     // leo los parametros de comfiguracion de la base de datos
     var count = 0;
     var config = [];
+    var fdb = Date();
 
     // traigo os datos del usuario que ingreso
      var user_doctor = new Firebase("https://tudoctor.firebaseio.com/eventos/");
@@ -121,22 +122,22 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
         count++;
 
         // aquí filtro los eventos para mostrar solo las fechas validas
-        // for (var i = 0; i <= $scope.config[0].eventos.length; i++) {
+        for (var i = 0; i <= $scope.config[0].eventos.length - 1; i++) {
+        	var fecha = $scope.config[0].eventos[i].start;
+        	fdb = fecha;
 
-        // 	var fecha = $scope.config[0].eventos[0].start;
-        // 	console.log('FECHA: '+ fecha);
+        	console.log('FECHA: '+ fdb);
 
-        // 	if (fecha < fecha_actual) {
-
-        // 		$scope.config[0].eventos[i] = {
-        // 			color: '#16a085',
-	       //          start: '0000-00-00T00:00:00',
-	       //          title: 'Vencido',
-	       //          url: '#'
-        // 		};
-
-        // 	}
-        // }
+        	if (fdb < fecha_actual) {
+        		console.log('es menor: ' + $scope.config[0].eventos[parseInt(i)].start);
+        		$scope.config[0].eventos[i] = {
+        			color: '#16a085',
+	                start: '0000-00-00T00:00:00',
+	                title: 'Vencido',
+	                url: '#'
+        		};
+        	}
+        }
 
         // console.log($scope.config[0].eventos);
     	
@@ -177,5 +178,7 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 
     	
     });
+
+	// console.log($scope.config[0].eventos);
 
 }]);
