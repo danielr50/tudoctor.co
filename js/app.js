@@ -7,6 +7,7 @@ var app = angular.module('tuDoctor', ['tuDoctor.controllers', 'tuDoctor.calendar
 
 // configuración de las rutas para la aplicación web
 app.config(function($stateProvider, $urlRouterProvider){
+	// $window.Stripe.setPublishableKey('pk_test_Go8oRcGqi7nirJSYWmLddjfd');
 
 	// defino las rutas de la app
 	$stateProvider
@@ -52,8 +53,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		})
 
 		.state('perfilDoctor', {
-			url: '/doctor/perfilDoctor',
+			url: '/doctor/perfil',
 			templateUrl: 'views/doctor/perfil.html'
+		})
+
+		.state('pago', {
+			url: '/doctor/pago/:plan',
+			templateUrl: 'views/doctor/pago.html',
+			controller: 'pagoCtrl'
 		})
 
 		.state('calendar', {

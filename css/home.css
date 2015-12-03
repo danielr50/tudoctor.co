@@ -276,3 +276,16 @@ a i{
 .typeahead li a{
 	color: #2c3e50 !important;
 }
+
+.logo h3{
+	text-align: center;
+	color: gray;
+	font-weight: 200;
+}
+
+.logo select{
+	background-color: #FFF;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

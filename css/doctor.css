@@ -92,3 +92,67 @@
 	padding: 12px;
 	margin-left: 10px;
 }
+
+.edit_img{
+	text-align: center;
+}
+
+.edit_img img{
+	width: 210px;
+ 	border-radius: 50%;
+ 	margin-bottom: 20px;
+}
+
+.carrito span{
+	margin-left: 8px;
+}
+
+.carrito i{
+	font-size: 1.5em;
+}
+
+/*Carrito*/
+.carrito .total{
+	text-align: right;
+	text-transform: uppercase;
+	color: #34495e;
+	margin-right: 68px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.carrito .confirmar{
+	text-align: right;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+.carrito .total span{
+	font-size: 2em;
+	font-weight: bold;
+}
+.carrito .radio{
+	margin-bottom: 28px;
+}
+.carrito .radio p i{
+	margin: 3px;
+	color: #34495e;
+}
+.carrito .cuenta_pago input{
+	padding: 4px;
+}
+.carrito .cuenta_pago select{
+	padding: 4px;
+	/*margin-left: 10px;*/
+	margin-right: 20px;
+}
+.pago-stripe{
+	margin-top: 45px;
+	text-align: center;
+}
+
+/*.ng-invalid {
+    color: red;
+}*/
+/*fin Carrito*/
