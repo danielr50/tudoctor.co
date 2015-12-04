@@ -1,5 +1,5 @@
 // modulo principal para los controladores de la aplicación
-app = angular.module('tuDoctor.controllers', ['ui.router', 'ngAnimate'])
+app = angular.module('tuDoctor.controllers', ['ui.router', 'ngAnimate', 'angularPayments'])
 
 app.controller('HomeCtrl', ['$scope', '$location', 'Auth', '$state', function($scope, $location, Auth, $state){
 
@@ -486,5 +486,78 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
 
     };
 
+
+}]);
+
+
+
+
+app.controller('pagoCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+    var plan = $stateParams.plan;
+
+    $scope.ver_banco = false;
+    $scope.ver_credito = true;
+
+    $scope.banco = function(){
+        
+        $scope.ver_credito = false;
+        $scope.ver_banco = true;
+    }
+    $scope.credito = function(){
+        
+        $scope.ver_banco = false;
+        $scope.ver_credito = true;
+    }
+
+    $scope.pagar = function(){
+        console.log('Pagar');
+    }
+
+
+    // Stripe Response Handler
+    $scope.stripeCallback = function (code, result) {
+        if (result.error) {
+            window.alert('it failed! error: ' + result.error.message);
+        } else {
+            window.alert('success! token: ' + result.id);
+        }
+    };
+
+    switch(plan){
+        case 'gratis':
+            $scope.plan_doctor = {
+                nombre: 'Gratis',
+                valor: 0,
+                pago: 'Mensual',
+                descripcion: 'Este plan permite probar nuestros servicios por un mes, teniendo acceso a todas los servicios de la plataforma'
+            };
+        break;
+
+        case 'basico':
+            $scope.plan_doctor = {
+                nombre: 'Básico',
+                valor: 20,
+                pago: 'Mensual',
+                descripcion: 'Este plan le permite publicar información de su perfil en nuestra plataforma pero su calendario no estará publico'
+            };
+        break;
+
+        case 'avanzado':
+            $scope.plan_doctor = {
+                nombre: 'Avanzado',
+                valor: 26,
+                pago: 'Mensual',
+                descripcion: 'Este plan le permite tener publica toda su información profesional así como tambien su calendarió de citas'
+            };
+        break;
+
+        default:
+            $scope.plan_doctor = {
+                nombre: 'Ninguno',
+                valor: 0,
+                pago: '0',
+                descripcion: 'Seleccion un plan'
+            };
+    }
 
 }]);
