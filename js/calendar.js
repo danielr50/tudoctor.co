@@ -74,6 +74,14 @@ app.controller('calendarCtrl', ['$scope', 'Horarios_doctor', function($scope, Ho
 
 app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Eventos){
 
+	$scope.prev = function(){
+		alert('Semana Anterior');
+	}	
+
+	$scope.next = function(){
+		alert('Semana Siguiente');
+	}
+
 	// mapa
 	var testconnection = navigator.onLine;
     if (testconnection) {
