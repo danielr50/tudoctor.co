@@ -119,16 +119,12 @@
     font-size: 55%;">.co</span></h1>
                  <h4 style="margin-top: -26px;font-weight:200;">para tu salud</h4>
                  <h2 style="color:#0077DB;margin-top: 35px;font-weight:500;">Saca una cita médica</h2>
-<<<<<<< HEAD
-                 <h3 style="color:#4B5B6E;margin-top: 5px;font-weight:300;font-size:22px;">sin espera, ni costo</h3>
-=======
                  <h3 style="color:#4B5B6E;margin-top: 5px;font-weight:300;font-size:22px;">sin espera, ni costo..</h3>
 
                  <h3>Ciudad: <select name="" id="">
                      <option value="bogota">Bogotá</option>
                      <option value="bucaramanga">Bucaramanga</option>
                  </select></h3>
->>>>>>> upstream/master
              </div>
             <!--  <h1>Comunidad para emprendedores</h1>
              <p>Sosmos una comunidad de emprendores imnovadores y creadores de ideas increíbles capaces de cambiar el mundo, cuando haces realmente lo que te apasiona tienes posibilidades de cambiar tu entorno.</p> -->
@@ -143,7 +139,7 @@
                             <option value="">Colsanitas</option>
                             <option value="">Suramericana</option>
                         </select>
-                        <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="¿Dónde estas?" required title="Es necesario saber tu dirección"><button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
+                        <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="Tu Dirección" required title="Es necesario saber tu dirección"><button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
                     </div>
                     <!-- <div id="clinica">
                     </div>
@@ -210,9 +206,9 @@
 
 <!---->
 <div class="top-grid">
-     <div class="container">
+     <div class="container fondo-clarito">
          <div class="top-grid-section">
-             <div class="col-md-4 top-grids">
+             <div class="col-md-4 top-grids rayas-laterales">
                  <h1 style="background: #4B5B6E;
     width: 50px;
     margin: 0 auto;
@@ -225,7 +221,7 @@
                  <p>Busca doctores por locación, nombre, especialidad, o plan de salud</p>
                  <!-- <p>Contamos con un gran equípo de médicos y especialistas dispuestos a atenderte en lo que necesites, toda tu salud a un solo clic.</p> -->
              </div>
-              <div class="col-md-4 top-grids">
+              <div class="col-md-4 top-grids rayas-laterales">
                  <h1 style="background: #4B5B6E;width: 50px;margin: 0 auto;border-radius: 40px;color: white;margin-bottom:10px;    margin-bottom: 10px;
     height: 60px;
     padding-top: 8px;">2</h1>
@@ -234,13 +230,13 @@
                  <p>Mira el calendario del doctor con el horario de disponibilidad y reserva una cita o llamalo</p>
                  <!-- <p>Programa y gestiona tus citas médicas, toma el control de tu salud y elige un médico para que te atienda en el momento que lo desees.</p> -->
              </div>
-             <div class="col-md-4 top-grids">
+             <div class="col-md-4 top-grids rayas-laterales raya-lateral-parche">
                  <h1 style="background: #4B5B6E;width: 50px;margin: 0 auto;border-radius: 40px;color: white;margin-bottom:10px;margin-bottom: 10px;
     height: 60px;
     padding-top: 5px;">3</h1>
                  <i class="fa fa-stethoscope fa-4x"></i>
                  <h3 style="color:#0077DB" >Ve a la cita</h3>
-                 <p>Todo listo, Asiste a tu cita <br> el día y a la hora definida</p>
+                 <p>Todo listo, Asiste a tu cita <br> el día y a la hora definida. <br> Así de fácil</p>
                  <!-- <p>Podras realizar consultas médicas simples, con el objetivo de mantener tu salud al día y evitar cualquier sorpresa, solo queremos qe seas felíz.</p> -->
              </div>
              <div class="clearfix"></div>
@@ -249,19 +245,40 @@
 </div>
 <!---->
 <div id="about" class="about">
-     <div class="container">
-         <div class="col-md-6 about-pic">
-             <img src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" alt=""/>
+     <div class="container fondo-clarito">
+        <div class="row">
+             <div class="col-xs-6 about-pic">
+                 <img src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" alt=""/>
+             </div>
+             <div class="col-xs-6 about-info">
+                 <h3 style="color:#0077DB"> Qué hacemos?</h3>
+                 <h3 style="color:#3498DB;    font-size: 145%;font-weight:300">Conveniencia para <br> servicios de salud</h3>
+                 <p>En tuDoctor te permitimos <br>gestionar tus citas médicas<br> directamente desde internet
+                    <br> <br>
+                 Solo debes seleccionar las fechas <br>y horarios que son adecuados para ti</p>
+                
+            </div>
+        
          </div>
-         <div class="col-md-6 about-info">
-             <h3 style="color:#0077DB"> Qué hacemos?</h3>
-             <h3 style="color:#3498DB;    font-size: 145%;font-weight:300">Conveniencia para servicios de salud</h3>
-             <p>En tuDoctor te permitimos <br>gestionar tus citas médicas<br> directamente desde internet
-                <br> <br>
-             Solo debes seleccionar las fechas <br>y horarios que son adecuados para ti</p>
-             <a style="background:#4B5B6E" href="#"><i style="font-size:150%" class="fa fa-user-md"></i> Soy Doctor</a>
-             <a style="background:#0077DB" href="#">Soy Paciente <i style="font-size:150%" class="fa fa-user"></i></a>
-         </div>
+
+         <div class="row" style="background:lightgrey;padding:12px;border-radius:8px;">
+                <div class="col-xs-6" style="height:80px;padding:0;background:#0077DB;padding:25px;    text-align: center;
+                border-top-left-radius:10px;
+                border-bottom-left-radius:10px;
+                "> 
+                 <a style="background:#0077DB;margin:0 auto;" href="#">Soy Paciente <i style="font-size:150%" class="fa fa-user"></i></a>
+                </div> 
+
+
+                <div class="col-xs-6" style="height:80px;background:#4B5B6E;text-align: center; padding:25px;
+                border-top-right-radius:10px;
+                border-bottom-right-radius:10px;
+                ">
+                 <a style="background:#4B5B6E" href="#"><i style="font-size:150%" class="fa fa-user-md"></i> Soy Doctor</a>
+                </div>
+                
+
+            </div>
      </div>
 </div>
 

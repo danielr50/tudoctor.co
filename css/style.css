@@ -1,8 +1,24 @@
 /*--
-	Author: Elkin Urango
+	Author: Oglit
 	Author URL: http://oglit.com
 	Proyect: TuDoctorVirtual;
 --*/
+
+.fondo-clarito{
+	background: whitesmoke;
+	    border-radius: 10px;
+    padding: 30px;
+}
+
+.rayas-laterales{
+	
+	border-left:2px solid lightgrey;
+	margin-bottom: 10px;
+
+}
+.raya-lateral-parche{
+	border-right:2px solid lightgrey;
+}
 
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,100,300,500,700,800,900,600,200);
