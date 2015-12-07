@@ -35,6 +35,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			controller: 'calendarPublicCtrl'
 		})
 
+		.state('calendario', {
+			url: '/calendario',
+			templateUrl: 'views/calendario.html'
+		})
+
 		.state('account', {
 			url: '/account',
 			templateUrl: 'views/doctor/account.html'
@@ -55,6 +60,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('perfilDoctor', {
 			url: '/doctor/perfil',
 			templateUrl: 'views/doctor/perfil.html'
+		})
+
+		.state('test', {
+			url: '/test',
+			templateUrl: 'views/new_calendar.html'
 		})
 
 		.state('pago', {

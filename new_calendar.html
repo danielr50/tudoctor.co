@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calendario</title>
+
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootstrap-modal.js"></script>
+	
+	<style>
+		.calendario{
+			margin-top: 20px; 
+		}
+
+		.header-calendar{
+			padding: 10px;
+			background-color: #1abc9c;
+			color: #FFF;
+		}
+
+		.header-calendar p{
+			text-align: center;
+		}
+
+		.header-calendar .left{
+			float: left;
+			font-size: 1.2em;
+			color: #2c3e50;
+			padding: 6px;
+			background-color: #FFF;
+			border-radius: 100%;
+		}
+
+		.header-calendar .right{
+			float: right;
+			font-size: 1.2em;
+			color: #2c3e50;
+			padding: 6px;
+			background-color: #FFF;
+			border-radius: 100%;
+		}
+
+		a{
+			color: gray;
+		}
+
+		table th, td{
+			text-align: center;
+
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="container calendario">
+	<div class="panel panel-default">
+		<div class="header-calendar">
+			<p>Citas disponibles
+				<a href=""><span class="left"><i class="ion-ios-arrow-left"></i></span></a>
+				<a href=""><span class="right"><i class="ion-ios-arrow-right"></i></span></a>
+			</p>
+
+		</div>
+	  <div class="panel-body">
+
+	  	<table class="table" border="1">
+	  		<thead>
+	  			<tr>
+	  				<th>Lunes <br> <span>Hoy</span></th>
+	  				<th>Martes <br> <span>4 dic</span></th>
+	  				<th>Miercoles <br> <span>5 dic</span></th>
+	  				<th style="background-color:#ecf0f1;">Jueves <br> <span>6 dic</span></th>
+	  				<th>Viernes <br> <span>7 dic</span></th>
+	  				<th>Sábado <br> <span>8 dic</span></th>
+	  				<th style="background-color:#ecf0f1;">Domingo <br> <span>9 dic</span></th>
+	  			</tr>
+	  		</thead>
+	  		<tbody>
+	  			<tr>
+	  				<td>
+	  					<p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p>
+		  				<p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p>
+		  				<p class="mas"><a href="#">ver mas</a></p>
+	  				</td>
+
+	  				<td>
+	  					<p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p>
+		  				<p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p>
+		  				<p class="mas"><a href="#">ver mas</a></p>
+	  				</td>
+
+	  				<td>
+	  					<p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p>
+		  				<p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p>
+		  				<p class="mas"><a href="#">ver mas</a></p>
+	  				</td>
+
+	  				<td style="background-color:#ecf0f1;">
+	  					<!-- <p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p> -->
+		  				<!-- <p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p> -->
+		  				<!-- <p class="mas"><a href="#">ver mas</a></p> -->
+	  				</td>
+
+	  				<td>
+	  					<p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p>
+		  				<p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p>
+		  				<p class="mas"><a href="#">ver mas</a></p>
+	  				</td>
+
+	  				<td>
+	  					<p><a href="#">8:00 am</a></p>
+		  				<p><a href="#">8:20 am</a></p>
+		  				<p><a href="#">8:40 am</a></p>
+		  				<p><a href="#">9:00 am</a></p>
+		  				<p class="mas"><a href="#">ver mas</a></p>
+	  				</td>
+
+	  				<td style="background-color:#ecf0f1;"></td>
+	  			</tr>
+	  		</tbody>
+	  	</table>
+
+	  </div>
+	</div>
+</div>
+</body>
+</html>
