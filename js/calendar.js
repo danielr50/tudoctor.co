@@ -107,8 +107,20 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 	        });
     }
 
+
     var f = new Date();
     var dia = f.getDay();
+    console.log('DIA: ' + dia);
+
+    $scope.fecha = "4 Dic";
+
+    if (dia = 1) {
+    	// alert('Hoy es lunes');
+    	$('.lunes').css('background', '#ecf0f1');
+    }
+    
+
+
     if (dia < 10) {
     	dia = '0'+dia;
     }
@@ -129,59 +141,69 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
         $scope.config = config.filter(Boolean);
         count++;
 
+        console.log($scope.config[0].dias.lunes);
+        $scope.lunes = $scope.config[0].dias.lunes;
+        $scope.martes = $scope.config[0].dias.martes;
+        $scope.miercoles = $scope.config[0].dias.miercoles;
+        $scope.jueves = $scope.config[0].dias.jueves;
+        $scope.viernes = $scope.config[0].dias.viernes;
+
+
         // aquí filtro los eventos para mostrar solo las fechas validas
-        for (var i = 0; i <= $scope.config[0].eventos.length - 1; i++) {
-        	var fecha = $scope.config[0].eventos[i].start;
-        	fdb = fecha;
+        // for (var i = 0; i <= $scope.config[0].eventos.length - 1; i++) {
+        // 	var fecha = $scope.config[0].eventos[i].start;
+        // 	fdb = fecha;
 
-        	console.log('FECHA: '+ fdb);
+        // 	// console.log('FECHA: '+ fdb);
 
-        	if (fdb < fecha_actual) {
-        		console.log('es menor: ' + $scope.config[0].eventos[parseInt(i)].start);
-        		$scope.config[0].eventos[i] = {
-        			color: '#16a085',
-	                start: '0000-00-00T00:00:00',
-	                title: 'Vencido',
-	                url: '#'
-        		};
-        	}
-        }
+        // 	if (fdb < fecha_actual) {
+        // 		console.log('es menor: ' + $scope.config[0].eventos[parseInt(i)].start);
+        // 		$scope.config[0].eventos[i] = {
+        // 			color: '#16a085',
+	       //          start: '0000-00-00T00:00:00',
+	       //          title: 'Vencido',
+	       //          url: '#'
+        // 		};
+        // 	}
+        // }
+
+        
 
         // console.log($scope.config[0].eventos);
     	
     	// calculo horario del doctor
-		$('#calendar').fullCalendar({
-		  header: {
-			left: 'prev',
-			center: 'title',
-			right: 'month,next'
+		// $('#calendar').fullCalendar({
+		//   header: {
+		// 	left: 'prev',
+		// 	center: 'title',
+		// 	right: 'month,next'
 			// right: 'month,agendaWeek,agendaDay,next'
-		  },
-		  lang: 'es',
-		  defaultView: 'month',
-		  editable: false,
+		  // },
+		  // lang: 'es',
+		  // defaultView: 'month',
+		  // editable: false,
 		  // businessHours: true, // display business hours
-		  eventLimit: true, // allow "more" link when too many events
+		  // eventLimit: true, // allow "more" link when too many events
 
 		  // slotMinutes: 30,
-		  minTime : $scope.config[0].hora_inicio_labores+ ':00',
+		  // minTime : $scope.config[0].hora_inicio_labores+ ':00',
 		  // maxTime : $scope.config[0].hora_fin_labores+ ':00',
-		  firstDay : 1,
-		  allDaySlot : false,
+		  // firstDay : 1,
+		  // allDaySlot : false,
 		  // weekends: false,
-		  defaultEventMinutes : $scope.config[0].hora_inicio_labores, 
+		  // defaultEventMinutes : $scope.config[0].hora_inicio_labores, 
 		  // dragOpacity: "0.5",
 		  // unselectAuto: false,
 		  // weekMode : false,
-		  businessHours: {
-		  	start: $scope.config[0].hora_inicio_labores,
-		  	end: $scope.config[0].hora_fin_labores,
-		  	dow: [1,2,3,4,5]
-		  },
-		  events: function(start, end, timezone, callback){
-		  	callback($scope.config[0].eventos);
-		  }
-		});
+		//   businessHours: {
+		//   	start: $scope.config[0].hora_inicio_labores,
+		//   	end: $scope.config[0].hora_fin_labores,
+		//   	dow: [1,2,3,4,5]
+		//   },
+		//   events: function(start, end, timezone, callback){
+		//   	callback($scope.config[0].eventos);
+		//   }
+		// });
 
 
     	
