@@ -53,8 +53,9 @@
 	color: #bdc3c7 !important;
 }
 
+/* no poner !important a algo tan variable como los links*/
 a{
-	color: gray !important;
+	color: gray;
 }
 
 table th, td{

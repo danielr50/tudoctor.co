@@ -59,14 +59,13 @@ opacity: 0.8;
 /*padding-top: 2%;*/
 }
 div#lugar{
-	background-color: #FFF !important;
 	padding: 18px;
 	border-radius: 8px 0 0 8px;
 }
-.banner div{
+/*.banner div{
 	display: inline;
 
-}
+}*/
 .banner div i{
 	font-size: 1.3em;
 	/*margin-right: 10px;*/
@@ -90,14 +89,14 @@ div#lugar{
 .banner-info{
 text-align:center;
 color:#fff;
-padding-top:18%;
+padding-top:2%;
 }
 .banner-info h1 {
 font-weight: 300;
 font-size: 3.3em;
 margin: 0.5em 0;
 }
-.banner-info p{
+.i-info p{
 font-weight: 300;
 font-size:1em;
 line-height:1.5em;
@@ -191,7 +190,7 @@ display:inline-block;
 .top-menu ul li a{
 display:block;
 padding:0.4em 0.5em;
-color:#fff;
+color:#0077db;
 text-decoration:none;
 font-size: 1em;
 font-weight: 300;
@@ -736,7 +735,7 @@ color: #E74C3C;
 min-height: 635px;
 }
 .banner-info {
-padding-top: 15%;
+padding-top: 3%;
 }
 .top-grids h3 {
 font-size: 1.5em;
@@ -779,6 +778,48 @@ width: 54%;
 .about-pic {
 width: 46%;
 }
+
+#cubreFormularioPrincipal{
+		/*background:white!important;*/
+		padding-left: 20px;
+		border-radius:10px;
+
+		display: block; 
+		width: 100%;
+		margin-top:20px;
+	}
+
+	#especialidad{
+		margin-top:15px;
+		display: block; 
+		width: 99%;
+		margin-bottom:15px;
+	}
+
+	#nombreDoc{
+		margin-bottom:15px;	
+		display: block; 
+		width: 100%;
+	}
+
+	#planSalud{
+/*		margin-top:15px;*/
+		display: block; 
+		width: 99%;
+		height:45px!important;
+		margin-left:5px;
+
+	}
+
+	#tuDireccion{
+		margin-top:15px;
+		display: block; 
+		width: 100%;
+	}
+
+
+
+
 }
 @media(max-width:768px){
 .banner {
@@ -822,6 +863,44 @@ width: 81%;
 .about-pic {
 width: 100%;
 }
+
+	#cubreFormularioPrincipal{
+		/*background:white!important;*/
+		padding-left: 20px;
+		border-radius:10px;
+
+		display: block; 
+		width: 100%;
+		margin-top:20px;
+	}
+
+	#especialidad{
+		margin-top:15px;
+		display: block; 
+		width: 99%;
+	}
+
+	#nombreDoc{
+		
+		display: block; 
+		width: 100%;
+	}
+
+	#planSalud{
+		margin-top:15px;
+		display: block; 
+		width: 75%;
+		height:45px!important;
+		margin-left:-5px;
+		margin-bottom:30px;
+	}
+
+	#tuDireccion{
+		margin-top:15px;
+		display: block; 
+		width: 100%;
+	}
+
 }
 @media (max-width: 640px){
 .banner {
@@ -838,7 +917,7 @@ font-size: 2.5em;
 font-size: 0.9em;
 }
 .banner-info {
-padding-top: 21%;
+padding-top: 15%;
 }
 .about-pic {
 width: 80%;
@@ -915,6 +994,16 @@ font-size:1.35em;
 width: 100%;
 margin: 6px auto 0 auto;
 }
+
+
+	#planSalud{
+/*		margin-top:15px;*/
+		display: block; 
+		width: 90%;
+		height:45px!important;
+		margin-left:-5px;
+
+	}
 }
 @media (max-width: 320px){
 .top-menu ul li a {
@@ -944,7 +1033,7 @@ a.button {
 font-size: 1em;
 }
 .banner-info {
-padding-top:20%;
+padding-top:6%;
 }
 .about {
 padding: 3em 0 1em 0;
@@ -1015,4 +1104,10 @@ height: 53px;
 	.logo img {
 	  width: 70%;
 	}
+}
+
+
+
+a{
+	color: #0077db;
 }

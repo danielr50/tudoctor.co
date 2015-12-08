@@ -34,11 +34,11 @@
      <div class="container">
          <div class="fixed-header">
              <div class="top-menu">
-                 <ul>
-                     <li class="active"><a class="scroll" href="http://localhost:4000/#/#home">Inicio</a></li>
-                     <li><a class="scroll" href="http://localhost:4000/#/#about">Idea</a></li>
+                 <ul style="font-weight:900;">
+                     <li class="active"><a style="font-weight: 600" class="scroll" href="http://localhost:3000/#/#home">Inicio</a></li>
+                     <li><a style="font-weight: 600"  class="scroll" href="http://localhost:3000/#/#about">Idea</a></li>
                      <!-- <li><a class="scroll" href="#gallery">Equipo</a></li> -->
-                     <li><a class="scroll" href="http://localhost:4000/#/#contact">Ayuda</a></li>
+                     <li><a style="font-weight: 600"  class="scroll" href="http://localhost:3000/#/#contact">Ayuda</a></li>
                  </ul>          
              </div>
              <div class="right-msg">
@@ -47,9 +47,9 @@
                  <a class="scroll" href="#"><i class="fa fa-twitter fa-lg sociales"></i></a>
                  <a class="scroll" href="#"><i class="fa fa-instagram fa-lg sociales"></i></a>
                  <a class="scroll" href="#"><i class="fa fa-youtube fa-lg sociales"></i></a> -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="color:#0077db;">
                  <a ng-if="!verMenu"  href="#/login">Ingresar</a>
-                 <a ng-if="!verMenu"  href="#/registro">Registrar</a>
+                 <a ng-if="!verMenu"  href="#/registro">Registro</a>
                  <!-- <a ng-if="verMenu" href="">{{authData.password.email}}</a> -->
     
 
@@ -108,9 +108,9 @@
 <!--body-->
 
      <div class="container" ng-controller="HomeCtrl">
-        <div clas="data">
+        <div class="data">
          <div class="banner-info">
-             <div class="logo">
+             <div class="logo" style="padding-top:16px">
                  <!-- <a href="index.html"><img id="portada" src="images/doctorweb.svg" alt=""/></a> -->
                 <h1 style="margin-top: -112px;"><span style="color: white;
     font-weight: 200;font-size:69%">tu</span><span style="color:white;
@@ -119,9 +119,9 @@
     font-size: 55%;">.co</span></h1>
                  <h4 style="margin-top: -26px;font-weight:200;">para tu salud</h4>
                  <h2 style="color:#0077DB;margin-top: 35px;font-weight:500;">Saca una cita médica</h2>
-                 <h3 style="color:#4B5B6E;margin-top: 5px;font-weight:300;font-size:22px;">sin espera, ni costo..</h3>
+                 <h3 style="color:#4B5B6E;margin-top: 5px;font-weight:300;font-size:22px;font-style:italic;">sin espera, ni costo..</h3>
 
-                 <h3>Ciudad: <select name="" id="">
+                 <h3 style="color:#CC0033;font-weight:400">Ciudad: <select name="" id="">
                      <option value="bogota">Bogotá</option>
                      <option value="bucaramanga">Bucaramanga</option>
                  </select></h3>
@@ -130,25 +130,58 @@
              <p>Sosmos una comunidad de emprendores imnovadores y creadores de ideas increíbles capaces de cambiar el mundo, cuando haces realmente lo que te apasiona tienes posibilidades de cambiar tu entorno.</p> -->
              <!-- <a href="#" data-toggle="modal" class="hvr-shutter-out-vertical button" data-target="#doctor">Registro Doctor</a>
              <a data-toggle="modal" data-target="#paciente" class="hvr-shutter-out-vertical button" href="#">Registro Paciente</a> -->
-                <form ng-submit="filtrar()">
-                    <div id="lugar">
-                        <!-- <i class="fa fa-stethoscope"></i> --><input type="text" placeholder="Especialidad">
-                        <!-- <i class="fa fa-user-md"></i> --><input id="buscar" type="text" placeholder="Nombre doctor" data-provide="typeahead">
-                        <!-- <i class="fa fa-h-square"></i> --><select name="" id=""  style="background:#FFF;">
-                            <option selected="selected" style=" display: none;">Plan de salud</option>
-                            <option value="">Colsanitas</option>
-                            <option value="">Suramericana</option>
-                        </select>
-                        <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="Tu Dirección" required title="Es necesario saber tu dirección"><button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
-                    </div>
-                    <!-- <div id="clinica">
-                    </div>
-                    <div id="especialista">
-                    </div>
-                    <div id="direccion">
-                    </div> -->
+                <form class="form-horizontal" ng-submit="filtrar()">
+                    <div class="form-group">
 
-                    <button style="background:#CC0033;" type="submit">Buscar</button>
+                        <div id="lugar" class="col-md-12">
+                            <div class="form-inline">
+                                <div id="cubreFormularioPrincipal" class="form-group" style="background:whitesmoke;padding-left: 20px;border-radius:10px;">
+                            
+                                    <div id="especialidad" class="form-group" style="margin-right:16px;">
+                                        <!-- <i class="fa fa-stethoscope"></i> --><input type="text" placeholder="Especialidad" style="display: block; width: 100%;margin-left:5px;border: 2px solid lightgrey;">
+                                    </div>
+
+                                    <div id="nombreDoc" class="form-group" style="margin-right: 16px;    padding-left: 5px;"> 
+                                        <!-- <i class="fa fa-user-md"></i> --><input id="buscar" type="text" placeholder="Nombre Doctor" data-provide="typeahead" style="display: block; 
+        width: 100%;border: 2px solid lightgrey;">
+                                    </div>
+
+
+                                    <div  id="planSalud" class="form-group" style="margin-right: 14px;">
+                                        <!-- <i class="fa fa-h-square"></i> -->
+                                        <select id="planSalud" name=""  style="background:#FFF;border: 2px solid lightgrey;
+                                        margin-left: 10px;height:40px;margin-right:1px;
+                                        ">
+                                            <option selected="selected" style=" display: none;">Plan de salud</option>
+                                            <option value="">Colsanitas</option>
+                                            <option value="">Suramericana</option>
+                                            <option value="">- No tengo -</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" style="margin-right: 14px;">
+                                        <button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
+
+                                        <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="Tu dirección" required title="Es necesario saber tu dirección"
+                                        style="border: 2px solid lightgrey;">
+
+                                       
+                                    </div>
+
+                                    <div class="form-group" style="    margin-right: 0px;">
+                                        
+                                   
+                                        <button  style="background:#CC0033;border-radius:0px 10px 10px 0px!important" type="submit">Buscar</button>
+                                    </div>
+                                </div>    
+                            </div>        
+
+
+                        </div>
+                        
+                    </div>
+
+
                 </form>
              </div>
         </div>
@@ -190,7 +223,7 @@
                 
             </div>
             <div class="modal-footer foterModal">
-                <button type="button" class="btn btn-success" id="registrarPaciente">Registrar</button>
+                <button type="button" class="btn btn-success" id="registrarPaciente">Registro</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 <br><br>
                 <div class="respuestaPaciente"></div>
@@ -218,7 +251,7 @@
     padding-top: 8px;">1</h1>
                  <i class="fa fa-user-md fa-4x"></i>
                  <h3 style="color:#0077DB">Encuentra Doctores</h3>
-                 <p>Busca doctores por locación, nombre, especialidad, o plan de salud</p>
+                 <p>Busca doctores por locación, <br> nombre, especialidad, <br> o plan de salud</p>
                  <!-- <p>Contamos con un gran equípo de médicos y especialistas dispuestos a atenderte en lo que necesites, toda tu salud a un solo clic.</p> -->
              </div>
               <div class="col-md-4 top-grids rayas-laterales">
@@ -227,7 +260,7 @@
     padding-top: 8px;">2</h1>
                  <i class="fa fa-calendar fa-4x"></i>
                  <h3 style="color:#0077DB" >Programa una cita</h3>
-                 <p>Mira el calendario del doctor con el horario de disponibilidad y reserva una cita o llamalo</p>
+                 <p>Mira el calendario del doctor <br> con el horario de disponibilidad <br> y reserva una cita o llamalo</p>
                  <!-- <p>Programa y gestiona tus citas médicas, toma el control de tu salud y elige un médico para que te atienda en el momento que lo desees.</p> -->
              </div>
              <div class="col-md-4 top-grids rayas-laterales raya-lateral-parche">
@@ -261,21 +294,32 @@
         
          </div>
 
-         <div class="row" style="background:lightgrey;padding:12px;border-radius:8px;">
-                <div class="col-xs-6" style="height:80px;padding:0;background:#0077DB;padding:25px;    text-align: center;
+         <div class="row">
+                <div class="col-xs-0 col-md-2"></div>       
+        
+                <div class="col-xs-6 col-md-4" style="
+                border:3px solid lightgrey;
+                height:80px;padding:0;background:#0077DB;padding:15px;    text-align: center;
                 border-top-left-radius:10px;
                 border-bottom-left-radius:10px;
+                color:white;
+                border-right:none;
                 "> 
-                 <a style="background:#0077DB;margin:0 auto;" href="#">Soy Paciente <i style="font-size:150%" class="fa fa-user"></i></a>
+                 <a style="background:#0077DB;margin:0 auto;color:white;font-size: 1.5em;" href="#">Soy Paciente <i style="font-size: 45px;
+    margin-left: 15px;" class="fa fa-user"></i></a>
                 </div> 
 
 
-                <div class="col-xs-6" style="height:80px;background:#4B5B6E;text-align: center; padding:25px;
+                <div class="col-xs-6 col-md-4" style="height:80px;background:#4B5B6E;text-align: center; padding:15px;
                 border-top-right-radius:10px;
                 border-bottom-right-radius:10px;
+                 border:3px solid lightgrey;
+                border-left:none;
                 ">
-                 <a style="background:#4B5B6E" href="#"><i style="font-size:150%" class="fa fa-user-md"></i> Soy Doctor</a>
+                 <a style="color:white;background:#4B5B6E;font-size: 1.5em;" href="#"><i style="font-size: 45px;
+    margin-right: 15px;" class="fa fa-user-md"></i> Soy Doctor</a>
                 </div>
+                <div class="col-xs-0 col-md-2"></div>  
                 
 
             </div>
@@ -290,7 +334,11 @@
              <h4>Ayuda</h4>
              <p style="color:#858585; margin-bottom: 16px;
     margin-top: 20px;">Necesitas ayuda?</p>
-             <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">ir a preguntas frecuentes</a>
+             <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">Cómo funciona?</a>
+            <br><br>
+             <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">Preguntas frecuentes</a>
+             <br><br>
+             <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">Contacto</a>
          </div>
          <!--  <div class="row contact-form">
                 <form>
