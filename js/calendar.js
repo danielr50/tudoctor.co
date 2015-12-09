@@ -73,13 +73,37 @@ app.controller('calendarCtrl', ['$scope', 'Horarios_doctor', function($scope, Ho
 
 
 app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Eventos){
+	$scope.count =4;
 
+    // funcion para retroceder una semana en el calendario
 	$scope.prev = function(){
 		alert('Semana Anterior');
+
 	}	
 
+    // función para avanzar una semana en el calendario
 	$scope.next = function(){
 		alert('Semana Siguiente');
+
+		$scope.count++;
+
+		if ($scope.count <= 10) {
+            console.log($scope.count);
+
+            // ocultar semana actual
+            // $scope.calendario_semanal = '';
+            $scope.config ='';
+
+
+			for (var i = $scope.count; i <= 10; i++) {
+
+		    	$scope.calendario_semanal[i] = {
+		    		id: i+1,
+		    		dia: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'],
+		    		fecha: (fecha_dia+i)-(dia-1) + ' ' + $scope.mes
+		    	}
+	   		}
+		}
 	}
 
 	// mapa
@@ -107,31 +131,134 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 	        });
     }
 
+    $scope.calendario_semanal = [];
 
     var f = new Date();
     var dia = f.getDay();
-    console.log('DIA: ' + dia);
+    var fecha_dia = f.getDate();
+    var mes = (f.getMonth() +1);
 
-    $scope.fecha = "4 Dic";
+    switch(mes){
+    	case 1:
+    		$scope.mes = 'Ene';
+    	break;
 
-    if (dia = 1) {
-    	// alert('Hoy es lunes');
-    	$('.lunes').css('background', '#ecf0f1');
+    	case 2:
+    		$scope.mes = 'Feb';
+    	break;
+
+    	case 3:
+    		$scope.mes = 'Mar';
+    	break;
+
+    	case 4:
+    		$scope.mes = 'Abr';
+    	break;
+
+    	case 5:
+    		$scope.mes = 'May';
+    	break;
+
+    	case 6:
+    		$scope.mes = 'Jun';
+    	break;
+
+    	case 7:
+    		$scope.mes = 'Jul';
+    	break;
+
+    	case 8:
+    		$scope.mes = 'Ago';
+    	break;
+
+    	case 9:
+    		$scope.mes = 'Sep';
+    	break;
+
+    	case 10:
+    		$scope.mes = 'Oct';
+    	break;
+
+    	case 11:
+    		$scope.mes = 'Nov';
+    	break;
+
+    	case 12:
+    		$scope.mes = 'Dic';
+    	break;
     }
+
+
+    switch(dia){
+    	case 1:
+	    	// es lunes
+	    	$('.lunes').css('background', '#ecf0f1');
+	    	$scope.dia = 'Lunes';
+    	break;
+
+    	case 2:
+    		// es martes
+    		$('.martes').css('background', '#ecf0f1');
+    		$scope.dia = 'Martes';
+    		break;
+
+    	case 3:
+    		// 	es miercoles
+    		$('.miercoles').css('background', '#ecf0f1');
+    		$scope.dia = 'Miercoles';
+    		break;
+
+    	case 4:
+    		// es jueves
+    		$('.jueves').css('background', '#ecf0f1');
+    		$scope.dia = 'Jueves';
+    		break;
+
+    	case 5:
+    		// es viernes
+    		$('.viernes').css('background', '#ecf0f1');
+    		$scope.dia = 'Viernes';
+    		break;
+    }
+
+
+    for (var i = 0; i <= 4; i++) {
+
+    	$scope.calendario_semanal[i] = {
+    		id: i+1,
+    		dia: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'],
+    		fecha: (fecha_dia+i)-(dia-1) + ' ' + $scope.mes
+    	};
+    }
+
+    console.log($scope.calendario_semanal);
+
+    // if (dia == 1) {
+    // 	// alert('Hoy es lunes');
+    // 	$('.lunes').css('background', '#ecf0f1');
+    // }
     
 
 
     if (dia < 10) {
     	dia = '0'+dia;
     }
-    var fecha_actual = f.getFullYear() + "-" + (f.getMonth() +1) + '-' + dia + 'T'+ (f.getHours()-1)+':'+f.getMinutes()+":"+f.getSeconds();
+    // var fecha_actual = f.getFullYear() + "-" + (f.getMonth() +1) + '-' + dia + 'T'+ (f.getHours()-1)+':'+f.getMinutes()+":"+f.getSeconds();
 
-    console.log('fecha_actual: ' + fecha_actual);
+    // console.log('Fecha: ' + fecha_actual);
 
     // leo los parametros de comfiguracion de la base de datos
     var count = 0;
     var config = [];
     var fdb = Date();
+
+    $scope.lunes = [];
+    $scope.martes = [];
+    $scope.miercoles = [];
+    $scope.jueves = [];
+    $scope.viernes = [];
+
+    $scope.dia = [];
 
     // traigo os datos del usuario que ingreso
      var user_doctor = new Firebase("https://tudoctor.firebaseio.com/eventos/");
@@ -140,13 +267,63 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
         // config[count].$id = snapshot.key();
         $scope.config = config.filter(Boolean);
         count++;
+       
 
-        console.log($scope.config[0].dias.lunes);
-        $scope.lunes = $scope.config[0].dias.lunes;
-        $scope.martes = $scope.config[0].dias.martes;
-        $scope.miercoles = $scope.config[0].dias.miercoles;
-        $scope.jueves = $scope.config[0].dias.jueves;
-        $scope.viernes = $scope.config[0].dias.viernes;
+        // LUNES
+        for (var i = 0; i < $scope.config[0].dias.lunes.length; i++) {
+        	$scope.lunes[i] = $scope.config[0].dias.lunes[i].cita.substring($scope.config[0].dias.lunes[i].cita.lastIndexOf('T')+1);
+        	$scope.dia[i] = $scope.config[0].dias.lunes[i].cita.substring($scope.config[0].dias.lunes[i].cita.lastIndexOf('T'),0);
+
+        	// console.log('Dia: '+$scope.dia);
+        	if (parseInt($scope.lunes[i]) >= 12) {
+        		$scope.lunes[i] += ' PM';
+        	}else{
+        		$scope.lunes[i] += ' AM';
+        	}
+        }
+
+        // martes
+        for (var i = 0; i < $scope.config[0].dias.martes.length; i++) {
+        	$scope.martes[i] = $scope.config[0].dias.martes[i].cita.substring($scope.config[0].dias.martes[i].cita.lastIndexOf('T')+1);
+        	if (parseInt($scope.martes[i]) >= 12) {
+        		$scope.martes[i] += ' PM';
+        	}else{
+        		$scope.martes[i] += ' AM';
+        	}
+        }
+
+          // miercoles
+        for (var i = 0; i < $scope.config[0].dias.miercoles.length; i++) {
+        	$scope.miercoles[i] = $scope.config[0].dias.miercoles[i].cita.substring($scope.config[0].dias.miercoles[i].cita.lastIndexOf('T')+1);
+        	if (parseInt($scope.miercoles[i]) >= 12) {
+        		$scope.miercoles[i] += ' PM';
+        	}else{
+        		$scope.miercoles[i] += ' AM';
+        	}
+        }
+
+        // jueves
+        for (var i = 0; i < $scope.config[0].dias.jueves.length; i++) {
+        	$scope.jueves[i] = $scope.config[0].dias.jueves[i].cita.substring($scope.config[0].dias.jueves[i].cita.lastIndexOf('T')+1);
+        	if (parseInt($scope.jueves[i]) >= 12) {
+        		$scope.jueves[i] += ' PM';
+        	}else{
+        		$scope.jueves[i] += ' AM';
+        	}
+        }
+
+        // viernes
+        for (var i = 0; i < $scope.config[0].dias.viernes.length; i++) {
+        	$scope.viernes[i] = $scope.config[0].dias.viernes[i].cita.substring($scope.config[0].dias.viernes[i].cita.lastIndexOf('T')+1);
+        	if (parseInt($scope.viernes[i]) >= 12) {
+        		$scope.viernes[i] += ' PM';
+        	}else{
+        		$scope.viernes[i] += ' AM';
+        	}
+        }
+
+
+
 
 
         // aquí filtro los eventos para mostrar solo las fechas validas
