@@ -92,7 +92,7 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 
             // ocultar semana actual
             // $scope.calendario_semanal = '';
-            $scope.config ='';
+            // $scope.config ='';
 
 
 			for (var i = $scope.count; i <= 10; i++) {
