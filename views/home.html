@@ -146,21 +146,21 @@
         width: 100%;border: 2px solid lightgrey;">
                                     </div>
 
-
+                                    <!-- <div style="text-align:center;margin:0 aut"></div> -->
                                     <div  id="planSalud" class="form-group" style="margin-right: 14px;">
-                                        <!-- <i class="fa fa-h-square"></i> -->
-                                        <select id="planSalud" name=""  style="background:#FFF;border: 2px solid lightgrey;
+                                        <!-- <i class="fa fa-h-square"></i> --> 
+                                        <select id="planSalud2" name=""  style="background:#FFF;border: 2px solid lightgrey;
                                         margin-left: 10px;height:40px;margin-right:1px;
                                         ">
                                             <option selected="selected" style=" display: none;">Plan de salud</option>
+                                            <option value="">- No tengo -</option>
                                             <option value="">Colsanitas</option>
                                             <option value="">Suramericana</option>
-                                            <option value="">- No tengo -</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group" style="margin-right: 14px;">
-                                        <button prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
+                                    <div class="form-group" style="">
+                                        <button id="boton-que-obtiene-direccion" prevent-default title="Obtener mi dirección" ng-click="getPosition()" style="background: #ecf0f1;"><i class="fa fa-map-marker"></i></button>
 
                                         <!-- <i class="fa fa-map-marker"></i> --><input ng-model="origen" type="text" placeholder="Tu dirección" required title="Es necesario saber tu dirección"
                                         style="border: 2px solid lightgrey;">
@@ -171,7 +171,7 @@
                                     <div class="form-group" style="    margin-right: 0px;">
                                         
                                    
-                                        <button  style="background:#CC0033;border-radius:0px 10px 10px 0px!important" type="submit">Buscar</button>
+                                        <button id="botonQueBusca"  style="background:#CC0033;border-radius:0px 10px 10px 0px!important;" type="submit">Buscar</button>
                                     </div>
                                 </div>    
                             </div>        
@@ -277,16 +277,16 @@
      </div>
 </div>
 <!---->
-<div id="about" class="about">
-     <div class="container fondo-clarito">
+<div id="about" class="about" style="background:#4688F9">
+     <div class="container" style="background:#4688F9">
         <div class="row">
              <div class="col-xs-6 about-pic">
                  <img src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" alt=""/>
              </div>
              <div class="col-xs-6 about-info">
-                 <h3 style="color:#0077DB"> Qué hacemos?</h3>
-                 <h3 style="color:#3498DB;    font-size: 145%;font-weight:300">Conveniencia para <br> servicios de salud</h3>
-                 <p>En tuDoctor te permitimos <br>gestionar tus citas médicas<br> directamente desde internet
+                 <h3 style="color:white;font-weight:200;font-size: 40px;"> Qué hacemos?</h3>
+                 <h3 style="color:white;    font-size: 28px;font-weight: 600;">Conveniencia para <br> servicios de salud</h3>
+                 <p style="color:#B2CEFF;font-size:20px;">En tuDoctor te permitimos <br>gestionar tus citas médicas<br> directamente desde internet
                     <br> <br>
                  Solo debes seleccionar las fechas <br>y horarios que son adecuados para ti</p>
                 
@@ -299,14 +299,15 @@
         
                 <div class="col-xs-6 col-md-4" style="
                 border:3px solid lightgrey;
-                height:80px;padding:0;background:#0077DB;padding:15px;    text-align: center;
+                height:80px;padding:0;background:white;padding:15px;    text-align: center;
                 border-top-left-radius:10px;
                 border-bottom-left-radius:10px;
                 color:white;
                 border-right:none;
                 "> 
-                 <a style="background:#0077DB;margin:0 auto;color:white;font-size: 1.5em;" href="#">Soy Paciente <i style="font-size: 45px;
-    margin-left: 15px;" class="fa fa-user"></i></a>
+                 <a id="soyPaciente" style="background:white;margin:0 auto;color:#0077DB;font-size: 1.5em;" href="#">Soy Paciente 
+                    <i style="font-size: 45px;
+    margin-left: 15px;color:#0077DB!important;" class="fa fa-user"></i></a>
                 </div> 
 
 
@@ -316,7 +317,7 @@
                  border:3px solid lightgrey;
                 border-left:none;
                 ">
-                 <a style="color:white;background:#4B5B6E;font-size: 1.5em;" href="#"><i style="font-size: 45px;
+                 <a id="soyDoctor" style="color:white;background:#4B5B6E;font-size: 1.5em;" href="#"><i style="font-size: 45px;
     margin-right: 15px;" class="fa fa-user-md"></i> Soy Doctor</a>
                 </div>
                 <div class="col-xs-0 col-md-2"></div>  
@@ -332,8 +333,9 @@
          <div style="text-align:center;">
              <p class="contact-head" style="font-style: italic;">tuDoctor le da conveniencia a tu salud </p>
              <h4>Ayuda</h4>
-             <p style="color:#858585; margin-bottom: 16px;
-    margin-top: 20px;">Necesitas ayuda?</p>
+             <!-- <p style="color:#858585; margin-bottom: 16px;
+    margin-top: 20px;">Necesitas ayuda?</p> -->
+            <br>
              <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">Cómo funciona?</a>
             <br><br>
              <a href="#" style="color:#3498DB;text-align:center;margin-top:30px">Preguntas frecuentes</a>
