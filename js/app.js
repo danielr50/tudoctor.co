@@ -46,7 +46,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		})
 
 		.state('cita', {
-			url: '/cita/:fecha/:hora1/:duracion/:events',
+			url: '/cita/:fecha',
 			templateUrl: 'views/cita.html',
 			controller: 'citaCtrl'
 		})

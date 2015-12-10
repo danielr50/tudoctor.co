@@ -410,57 +410,116 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
         var tiempo_cita = parseInt($scope.duracion_cita);
 
         var contador = 0;
-        var eventos = [];
+        var horario = [];
 
         var hoy = f.getDate();
         var diaSemana = f.getDay();
         var incremento = 0;
 
-        var id_event = 0;
-        for (var j = diaSemana; j <= 5; j++) {
+        // var id_event = 0;
 
+        // horario
+        horario = {
+            doctor_id: '-K2xFw_MDovcZZo4zISZ',
+            periodo: 4,
+            dias: {
+               lunes:[],
+               martes: [],
+               miercoles: [],
+               jueves: [],
+               viernes: []
+            }
+        };
+
+        for (var j = diaSemana; j <= 5; j++) {
+            
             for (var i = hora1; i <= hora2; i++) {
 
                 for (var k = 1; k <= (60/tiempo_cita); k++) {
 
-                    if (contador == 0) {
-                        contador = '00';
+                    // if (contador == 0) {
+                    //     contador = '00';
+                    // }
+
+                    // if (i < 10) {
+                    //     i = '0'+i;
+                    // }
+
+                    console.log('Valor de j: ' + j);
+
+                    switch(j){
+                        case 1:
+                            horario.dias.lunes.push({
+                                cita: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador
+                            });
+                            break;
+
+                        case 2:
+                            horario.dias.martes.push({
+                                cita: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador
+                            });
+                            break;
+
+                        case 3:
+                            horario.dias.miercoles.push({
+                                cita: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador
+                            });
+                            break;
+
+                        case 4:
+                            horario.dias.jueves.push({
+                                cita: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador
+                            });
+                            break;
+
+                        case 5:
+                            horario.dias.viernes.push({
+                                cita: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador
+                            });
+                            break;
+
+                        default:
+                            console.log('Dia no valido');
+
                     }
 
-                    if (i < 10) {
-                        i = '0'+i;
-                    }
-                    if (hoy < 10) {
-                        eventos.push({
-                          // id: id_event,
-                          title: 'Disponible',
-                          start: fecha_actual+'-'+'0'+(hoy+incremento)+'T'+i+':'+contador,
-                          // end: fecha_actual+i+':'+tiempo_cita,
-                          color: '#16a085',
-                          // allDay: false,
-                          url: '#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
-                        });
-                    }else{
+                   // horario.dias = {
+                   //      j:{
+                   //         cita: fecha_actual+'-'+hoy+'T'+i+':'+contador
+                   //      }
+                   //  };
+                    
+                    // if (hoy < 10) {
+                    //     eventos.push({
+                    //       // id: id_event,
+                    //       title: 'Disponible',
+                    //       start: fecha_actual+'-'+'0'+(hoy+incremento)+'T'+i+':'+contador,
+                    //       // end: fecha_actual+i+':'+tiempo_cita,
+                    //       color: '#16a085',
+                    //       // allDay: false,
+                    //       url: '#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                    //     });
+                    // }else{
 
-                        console.log('Hora: ' +i +':' + contador);
+                    //     console.log('Hora: ' +i +':' + contador);
 
-                        eventos.push({
-                          // id: id_event,
-                          title: 'Disponible',
-                          start: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador,
-                          // end: fecha_actual+i+':'+tiempo_cita,
-                          color: '#16a085',
-                          // allDay: false,
-                          url: '#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
-                        });
+                    //     eventos.push({
+                    //       // id: id_event,
+                    //       title: 'Disponible',
+                    //       start: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador,
+                    //       // end: fecha_actual+i+':'+tiempo_cita,
+                    //       color: '#16a085',
+                    //       // allDay: false,
+                    //       url: '#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
+                    //     });
                         
-                    }
+                    // }
 
                     contador = parseInt(contador);
                     i = parseInt(i);
                   
                     
-                    id_event++;
+                    // id_event++;
 
                     contador = (contador + tiempo_cita);
 
@@ -475,11 +534,13 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
 
 
         // agrego los eventos de la semana a la DB
-        console.log(eventos);
-        Eventos.$add({
-            doctor_id: '-K2xFw_MDovcZZo4zISZ',
-            eventos: eventos
-        });
+        // console.log(eventos);
+        // Eventos.$add({
+        //     doctor_id: '-K2xFw_MDovcZZo4zISZ',
+        //     eventos: eventos
+        // });
+
+        Eventos.$add(horario);
 
         //oculto el modal
         $('#load_config').modal('hide');

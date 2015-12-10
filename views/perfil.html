@@ -31,73 +31,49 @@
 
 				</div>
 			  <div class="panel-body">
-
+				<div class="table-responsive">
 			  	<table class="table table-bordered">
 			  		<thead>
 			  			<tr>
-			  				<th><span class="number">1</span>Lunes <br> <span>Hoy</span></th>
-			  				<th><span class="number">2</span>Martes <br> <span>4 dic</span></th>
-			  				<th><span class="number">3</span>Miercoles <br> <span>5 dic</span></th>
-			  				<th style="background-color:#ecf0f1;"><span class="number">4</span>Jueves <br> <span>6 dic</span></th>
-			  				<th><span class="number">5</span>Viernes <br> <span>7 dic</span></th>
-<!-- 			  				<th>Sábado <br> <span>8 dic</span></th>
-			  				<th style="background-color:#ecf0f1;">Domingo <br> <span>9 dic</span></th> -->
+			  				<th ng-repeat="calendario in calendario_semanal" class="lunes"><span class="number">{{calendario.id}}</span> {{ calendario.dia[calendario.id-1] }} <br> <span>{{ calendario.fecha }}</span></th>
+			  			<!-- 	<th class="martes"><span class="number">2</span>Martes <br> <span>{{fecha}}</span></th>
+			  				<th class="miercoles"><span class="number">3</span>Miercoles <br> <span>Hoy</span></th>
+			  				<th class="jueves"><span class="number">4</span>Jueves <br> <span>{{fecha}}</span></th>
+			  				<th class="viernes"><span class="number">5</span>Viernes <br> <span>{{fecha}}</span></th> -->
 			  			</tr>
 			  		</thead>
 			  		<tbody>
 			  			<tr>
-			  				<td>
-			  					<p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p>
-				  				<p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p>
+
+			  				<td class="lunes">
+			  					<p ng-repeat="l in lunes | limitTo: 4" ><a href="#/cita/{{l}}">{{l}}</a></p>
 				  				<p class="mas"><a href="#">ver mas</a></p>
 			  				</td>
 
-			  				<td>
-			  					<p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p>
-				  				<p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p>
+			  				<td class="martes">
+			  					<p ng-repeat="m in martes | limitTo: 4"><a href="#/cita/{{m}}">{{m}}</a></p>
 				  				<p class="mas"><a href="#">ver mas</a></p>
 			  				</td>
 
-			  				<td>
-			  					<p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p>
-				  				<p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p>
+			  				<td class="miercoles">
+			  					<p ng-repeat="mi in miercoles | limitTo: 4"><a href="#/cita/{{mi}}">{{mi}}</a></p>
 				  				<p class="mas"><a href="#">ver mas</a></p>
 			  				</td>
 
-			  				<td style="background-color:#ecf0f1;">
-			  					<!-- <p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p> -->
-				  				<!-- <p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p> -->
-				  				<!-- <p class="mas"><a href="#">ver mas</a></p> -->
-			  				</td>
-
-			  				<td>
-			  					<p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p>
-				  				<p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p>
+			  				<td class="jueves">
+			  					<p ng-repeat="j in jueves | limitTo: 4"><a href="#/cita/{{j}}/">{{j}}</a></p>
 				  				<p class="mas"><a href="#">ver mas</a></p>
 			  				</td>
 
-			  			<!-- 	<td>
-			  					<p><a href="#">8:00 am</a></p>
-				  				<p><a href="#">8:20 am</a></p>
-				  				<p><a href="#">8:40 am</a></p>
-				  				<p><a href="#">9:00 am</a></p>
+			  				<td class="viernes">
+			  					<p ng-repeat="v in viernes | limitTo: 4"><a href="#/cita/{{v}}">{{v}}</a></p>
 				  				<p class="mas"><a href="#">ver mas</a></p>
 			  				</td>
 
-			  				<td style="background-color:#ecf0f1;"></td> -->
 			  			</tr>
 			  		</tbody>
 			  	</table>
+			  	</div>
 
 			  	<div class="info-doc">
 					<div class="type_pago">
