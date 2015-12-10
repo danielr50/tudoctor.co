@@ -199,6 +199,19 @@ font-weight: 300;
 	background-color: rgba(0,0,0,0.2);
 	padding:0.4em 0.8em;
 }
+
+#filtrarPor{
+	background: whitesmoke;
+	border-top-left-radius:15px;
+	border-bottom-left-radius:15px;
+
+}
+
+
+
+/*#filtrarPor :hover{
+	color:yellow!important;
+}*/
 /*.top-menu ul li.active a,.top-menu ul li a:hover{
 color: #e74c3c;
 }*/
@@ -862,6 +875,19 @@ width: 46%;
 
 }
 @media(max-width:768px){
+
+#filtrarPor{
+	background: lightgrey;
+	border-radius:15px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+
+.opFiltros{
+	color:white!important;
+}
+
 .banner {
 min-height: 616px;
 }

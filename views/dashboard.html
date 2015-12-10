@@ -1,23 +1,30 @@
 <div ng-include="'views/header.html'"></div>
 
 <div class="container doctor-list">
-	<div class="panel panel-default">
-	  <div class="panel-body">
-	    Resulados de búsqueda <span class="filtrar">
+	<div class="panel panel-default" style="border-radius: 21px;">
+	  <div class="panel-body" style="background:#4688F9;    border-radius: 20px;">
+	    <p style="color:white">Resulados de búsqueda </p><span class="filtrar">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-		          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por <span class="caret"></span></a>
+		          <a id="filtrarPor" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Más cercáno</a></li>
-		            <li><a href="#">Menor precio</a></li>
+		            <li><a class="opFiltros" href="#">Más cercáno</a></li>
+		            <li><a class="opFiltros" href="#">Menor precio</a></li>
 		          </ul>
 		        </li>
 			</ul>
 		</span>
-		<h1 class="list">Listado de doctores</h1>
-		<hr>
+		<h1 class="list" style="color:#B2CEFF">Listado de doctores</h1>
+		<hr style="border:1px solid lightgrey;">
 
-		<div class="row perfil-doctor" ng-repeat="doctor in doctores">
+		<div style="background: white;
+    border-bottom: 2px solid lightgrey;
+    padding-bottom: 35px;
+      margin: 4px;
+      margin-bottom: 20px;
+    border-radius: 15px;
+
+    padding-top: 20px;margin-top:-10px" class="row perfil-doctor" ng-repeat="doctor in doctores">
 			<div class="col-md-2"><a href="#/perfil"><img src="images/perfil.jpg" alt=""></a></div>
 			<div class="col-md-10">
 				<a href="#/perfil" style="color:#34495e;"><h2>{{doctor.nombre}}</h2></a>
@@ -26,7 +33,9 @@
 				<p>{{doctor.ciudad}}</p>
 				<p style="margin-bottom: 16px;">{{doctor.telefono}}</p>
 				<!-- <button class=" btn btn-success btn-doctor">Ver calendario</button> -->
-				<a class="btn-calendario" href="#/perfil">Ver calendario</a>
+				<a style="background: #CC0033;
+    border-radius: 10px;
+    padding: 10px;" class="btn-calendario" href="#/perfil">Ver calendario</a>
 			</div>
 		</div>
 
