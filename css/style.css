@@ -199,6 +199,19 @@ font-weight: 300;
 	background-color: rgba(0,0,0,0.2);
 	padding:0.4em 0.8em;
 }
+
+#filtrarPor{
+	background: whitesmoke;
+	border-top-left-radius:15px;
+	border-bottom-left-radius:15px;
+
+}
+
+
+
+/*#filtrarPor :hover{
+	color:yellow!important;
+}*/
 /*.top-menu ul li.active a,.top-menu ul li a:hover{
 color: #e74c3c;
 }*/
@@ -731,6 +744,24 @@ color: #E74C3C;
 }
 /*--responsive--*/
 @media(max-width:1024px){
+
+#botonQueBusca{
+	height: 43px;
+    margin-top: 10px;
+    width: 169px;
+    border-radius: 6px!important;
+    padding-top: 10px;
+}
+
+#boton-que-obtiene-direccion{
+
+    margin-left: -20px;
+    border-radius:20px!important;
+    border:2px solid #CC0033;
+    margin-bottom::20px!important;
+        margin-top: 18px;
+}
+
 .banner{
 min-height: 635px;
 }
@@ -785,29 +816,51 @@ width: 46%;
 		border-radius:10px;
 
 		display: block; 
-		width: 100%;
+		width: 49%;
 		margin-top:20px;
+		margin: 0 auto;
+		    padding-bottom: 15px;
 	}
 
 	#especialidad{
 		margin-top:15px;
-		display: block; 
-		width: 99%;
-		margin-bottom:15px;
+		/*display: block; 
+		width: 99%;*/
+		/*margin-bottom:15px;*/
 	}
 
 	#nombreDoc{
-		margin-bottom:15px;	
-		display: block; 
-		width: 100%;
+		margin-top:15px;	
+		/*display: block; 
+		width: 100%;*/
 	}
 
 	#planSalud{
-/*		margin-top:15px;*/
-		display: block; 
-		width: 99%;
+
+		margin-top:15px!important;
+		display: inline-block; 
+		width: 100%;
 		height:45px!important;
-		margin-left:5px;
+		/*margin-left: 113px;*/
+		/*margin:0 auto;*/
+		margin-right: 14px!important;
+
+		/*margin-left:;*/
+
+	}
+
+	#planSalud2{
+
+		margin-top:5px!important;
+		display: inline-block; 
+		width: 50%;
+		height:45px!important;
+		    margin-left: 18px!important;
+		/*margin:0 auto;*/
+		margin-right: 14px!important;
+		    margin-left: -84px;
+		    margin-bottom:20px;
+		/*margin-left:;*/
 
 	}
 
@@ -822,6 +875,19 @@ width: 46%;
 
 }
 @media(max-width:768px){
+
+#filtrarPor{
+	background: lightgrey;
+	border-radius:15px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+
+.opFiltros{
+	color:white!important;
+}
+
 .banner {
 min-height: 616px;
 }
@@ -980,9 +1046,9 @@ font-size: 1.8em;
 }
 .about-info p {
 font-size: 0.9em;
-overflow: hidden;
+/*overflow: hidden;*/
 height: 79px;
-margin-bottom: 1em;
+margin-bottom: 8em;
 }
 .portfolio h3,.contact h4 {
 font-size: 2em;
@@ -994,6 +1060,16 @@ font-size:1.35em;
 width: 100%;
 margin: 6px auto 0 auto;
 }
+
+#soyPaciente{
+	font-size:16px!important;
+}
+
+
+#soyDoctor{
+	font-size:16px!important;
+}
+
 
 
 	#planSalud{
@@ -1046,6 +1122,10 @@ padding:0;
 }
 .about-info h3 {
 font-size: 1.7em;
+}
+
+.about-info p {
+margin-bottom: 10em;
 }
 .portfolio h3, .contact h4 {
 font-size: 1.7em;

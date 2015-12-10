@@ -74,9 +74,12 @@
 }
 
 .filtrar ul li a{
-	color: gray !important;
+	/*color: gray !important;*/
 }
 
+.filtrar ul li a:hover{
+	color:#4688F9!important;
+}
 .calendario-doctor{
 	margin-top: 18px;
 }
