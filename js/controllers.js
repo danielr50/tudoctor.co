@@ -255,7 +255,18 @@ app.controller('registroCtrl', ['$scope', 'Doctores', 'Usuarios', '$state', func
 
 
 // cita
-app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos', function($scope, $stateParams, $http, Citas, Eventos){
+app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos', '$state', 'Auth', function($scope, $stateParams, $http, Citas, Eventos, $state, Auth){
+    var doctor_id = null;
+
+    // doctor logueado
+    Auth.$onAuth(function(authData){
+        if(authData === null){
+          console.log("not logged in yet");
+          $state.go('login');
+        } else{
+          doctor_id = authData.uid;
+        }
+    });
 
     var fecha = $stateParams.fecha;
     var hora1 = $stateParams.hora1;
@@ -301,7 +312,7 @@ app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos
             nombre: $scope.nombre,
             telefono: $scope.telefono,
             email: $scope.email,
-            doctor_id: '-K2xFw_MDovcZZo4zISZ'
+            doctor_id: doctor_id
         });
 
         alert('Su cita fue agendada!');
@@ -314,7 +325,7 @@ app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos
         // traigo os datos del usuario que ingreso
          var user_doctor = new Firebase("https://tudoctor.firebaseio.com/eventos/");
 
-         user_doctor.orderByChild("doctor_id").equalTo('-K2xFw_MDovcZZo4zISZ').on("child_added", function(snapshot) {
+         user_doctor.orderByChild("doctor_id").equalTo(doctor_id).on("child_added", function(snapshot) {
             config[count] = snapshot.val();
             config[count].$id = snapshot.key();
             var eventos_list = config.filter(Boolean);
@@ -346,10 +357,22 @@ app.controller('citaCtrl', ['$scope', '$stateParams', '$http', 'Citas', 'Eventos
 }]);
 
 
-app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http', 'Eventos', function($scope, $timeout, getConfiguracion, $http, Eventos){
+app.controller('doctorCtrl', ['$scope', '$timeout', '$http', 'Eventos', '$state', 'Auth', 'Config', function($scope, $timeout, $http, Eventos, $state, Auth, Config){
     $scope.hora_inicio_labores = null;
     $scope.hora_fin_labores = null;
     $scope.duracion_cita = null;
+
+    var doctor_id = null;
+
+    // doctor logueado
+    Auth.$onAuth(function(authData){
+        if(authData === null){
+          console.log("not logged in yet");
+          $state.go('login');
+        } else{
+          doctor_id = authData.uid;
+        }
+    });
 
 
     // traigo las citas pendientes del doctor
@@ -357,8 +380,8 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
     var citas = [];
 
     // traigo os datos del usuario que ingreso
-     var citas_doctor = new Firebase("https://tudoctor.firebaseio.com/citas/");
-     citas_doctor.orderByChild("doctor_id").equalTo('-K2xFw_MDovcZZo4zISZ').on("child_added", function(snapshot) {
+    var citas_doctor = new Firebase("https://tudoctor.firebaseio.com/citas/");
+     citas_doctor.orderByChild("doctor_id").equalTo(doctor_id).on("child_added", function(snapshot) {
         citas[count] = snapshot.val();
         // config[count].$id = snapshot.key();
         $scope.citas = citas.filter(Boolean);
@@ -367,17 +390,18 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
         console.log($scope.citas);
     });
 
-
-    getConfiguracion.on('value', function(snapshot){
+    var ref = new Firebase('https://tudoctor.firebaseio.com/configuracion/'+doctor_id);
+    ref.on('value', function(snapshot){
         var config = snapshot.val();
-        console.log(config);
+        console.log('Config: '+config);
 
         if (config != null) {
             $scope.hora_inicio_labores = config.hora_inicio_labores;
             $scope.hora_fin_labores = config.hora_fin_labores;
-            $scope.duracion_cita = config.duracion_cita; 
-
+            $scope.duracion_cita = config.duracion_cita;
+            // $scope.hora_almuerzo = config.hora_almuerzo;
         }else{
+
             $timeout(function(){
                 $('#load_config').modal('show');
             },2000);
@@ -390,11 +414,24 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
         var configuracion = {
             hora_inicio_labores: $scope.hora_inicio_labores,
             hora_fin_labores: $scope.hora_fin_labores,
-            duracion_cita: $scope.duracion_cita
+            duracion_cita: $scope.duracion_cita,
+            hora_almuerzo: $scope.hora_almuerzo
         };
 
-        // actualio la configuracion en firebase
-        getConfiguracion.update(configuracion);
+        if ($scope.config =! null) {
+            // actualio la configuracion en firebase
+            var ref = new Firebase('https://tudoctor.firebaseio.com/configuracion/'+doctor_id);
+            ref.update(configuracion);
+        }else{
+            Config.$add({
+                hora_inicio_labores: $scope.hora_inicio_labores,
+                hora_fin_labores: $scope.hora_fin_labores,
+                // hora_almuerzo: $scope.hora_almuerzo,
+                duracion_cita: $scope.duracion_cita,
+                doctor_id: doctor_id
+            });
+        }
+
 
 
         //creo el calendario de la semana
@@ -420,7 +457,7 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
 
         // horario
         horario = {
-            doctor_id: '-K2xFw_MDovcZZo4zISZ',
+            doctor_id: doctor_id,
             periodo: 4,
             dias: {
                lunes:[],
@@ -436,14 +473,6 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
             for (var i = hora1; i <= hora2; i++) {
 
                 for (var k = 1; k <= (60/tiempo_cita); k++) {
-
-                    // if (contador == 0) {
-                    //     contador = '00';
-                    // }
-
-                    // if (i < 10) {
-                    //     i = '0'+i;
-                    // }
 
                     console.log('Valor de j: ' + j);
 
@@ -483,41 +512,9 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
 
                     }
 
-                   // horario.dias = {
-                   //      j:{
-                   //         cita: fecha_actual+'-'+hoy+'T'+i+':'+contador
-                   //      }
-                   //  };
-                    
-                    // if (hoy < 10) {
-                    //     eventos.push({
-                    //       // id: id_event,
-                    //       title: 'Disponible',
-                    //       start: fecha_actual+'-'+'0'+(hoy+incremento)+'T'+i+':'+contador,
-                    //       // end: fecha_actual+i+':'+tiempo_cita,
-                    //       color: '#16a085',
-                    //       // allDay: false,
-                    //       url: '#/cita/' + fecha_actual+'-'+'0'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
-                    //     });
-                    // }else{
-
-                    //     console.log('Hora: ' +i +':' + contador);
-
-                    //     eventos.push({
-                    //       // id: id_event,
-                    //       title: 'Disponible',
-                    //       start: fecha_actual+'-'+(hoy+incremento)+'T'+i+':'+contador,
-                    //       // end: fecha_actual+i+':'+tiempo_cita,
-                    //       color: '#16a085',
-                    //       // allDay: false,
-                    //       url: '#/cita/' + fecha_actual+'-'+(hoy+incremento) + '/'+i+':'+contador+'/'+tiempo_cita+'/'+id_event,
-                    //     });
-                        
-                    // }
 
                     contador = parseInt(contador);
                     i = parseInt(i);
-                  
                     
                     // id_event++;
 
@@ -531,14 +528,6 @@ app.controller('doctorCtrl', ['$scope', '$timeout', 'getConfiguracion', '$http',
             }
             incremento++;
         } // fin calendario semanal
-
-
-        // agrego los eventos de la semana a la DB
-        // console.log(eventos);
-        // Eventos.$add({
-        //     doctor_id: '-K2xFw_MDovcZZo4zISZ',
-        //     eventos: eventos
-        // });
 
         Eventos.$add(horario);
 

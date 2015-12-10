@@ -58,7 +58,7 @@ app.controller('calendarCtrl', ['$scope', 'Horarios_doctor', function($scope, Ho
 		eventLimit: true, // allow "more" link when too many events
 		selectable: true,
 		selectHelper: true,
-		// timezone: 'America/Bogota',
+		// timezone: 'america/Bogota',
 
 		select: function(start, end) {
 			// var title = prompt('Event Title:');
@@ -72,8 +72,26 @@ app.controller('calendarCtrl', ['$scope', 'Horarios_doctor', function($scope, Ho
 }]);
 
 
-app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Eventos){
+app.controller('calendarPublicCtrl', ['$scope', 'Eventos', 'Auth', function($scope, Eventos, Auth){
 	$scope.count =4;
+
+    $scope.ver_mas_lunes=false;
+    $scope.ver_mas_martes=false;
+    $scope.ver_mas_miercoles=false;
+    $scope.ver_mas_jueves=false;
+    $scope.ver_mas_viernes=false;
+
+    var doctor_id = null;
+    // doctor logueado
+    Auth.$onAuth(function(authData){
+        if(authData === null){
+          console.log("not logged in yet");
+          $state.go('login');
+        } else{
+          doctor_id = authData.uid;
+          console.log('ID: ' + doctor_id);
+        }
+    });
 
     // funcion para retroceder una semana en el calendario
 	$scope.prev = function(){
@@ -84,26 +102,6 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
     // función para avanzar una semana en el calendario
 	$scope.next = function(){
 		alert('Semana Siguiente');
-
-		$scope.count++;
-
-		if ($scope.count <= 10) {
-            console.log($scope.count);
-
-            // ocultar semana actual
-            // $scope.calendario_semanal = '';
-            // $scope.config ='';
-
-
-			for (var i = $scope.count; i <= 10; i++) {
-
-		    	$scope.calendario_semanal[i] = {
-		    		id: i+1,
-		    		dia: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'],
-		    		fecha: (fecha_dia+i)-(dia-1) + ' ' + $scope.mes
-		    	}
-	   		}
-		}
 	}
 
 	// mapa
@@ -127,7 +125,6 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 	        marker = new google.maps.Marker({
 	            position: myLatlng,
 	            map: map
-	            
 	        });
     }
 
@@ -262,68 +259,82 @@ app.controller('calendarPublicCtrl', ['$scope', 'Eventos', function($scope, Even
 
     // traigo os datos del usuario que ingreso
      var user_doctor = new Firebase("https://tudoctor.firebaseio.com/eventos/");
-     user_doctor.orderByChild("doctor_id").equalTo('-K2xFw_MDovcZZo4zISZ').on("child_added", function(snapshot) {
+     user_doctor.orderByChild("doctor_id").equalTo('6da6c509-58a8-4a8c-b9e9-83d81766ae85').on("child_added", function(snapshot) {
         config[count] = snapshot.val();
         // config[count].$id = snapshot.key();
         $scope.config = config.filter(Boolean);
         count++;
        
+       console.log('Horarios');
+       console.log($scope.config);
 
         // LUNES
+        if ($scope.config[0].dias.lunes != null) {
+        $scope.ver_mas_lunes = true;
         for (var i = 0; i < $scope.config[0].dias.lunes.length; i++) {
         	$scope.lunes[i] = $scope.config[0].dias.lunes[i].cita.substring($scope.config[0].dias.lunes[i].cita.lastIndexOf('T')+1);
         	$scope.dia[i] = $scope.config[0].dias.lunes[i].cita.substring($scope.config[0].dias.lunes[i].cita.lastIndexOf('T'),0);
 
         	// console.log('Dia: '+$scope.dia);
         	if (parseInt($scope.lunes[i]) >= 12) {
-        		$scope.lunes[i] += ' PM';
+        		$scope.lunes[i] += ' pm';
         	}else{
-        		$scope.lunes[i] += ' AM';
+        		$scope.lunes[i] += ' am';
         	}
         }
+        };
 
         // martes
+        if ($scope.config[0].dias.martes != null) {
+            $scope.ver_mas_martes = true;
         for (var i = 0; i < $scope.config[0].dias.martes.length; i++) {
         	$scope.martes[i] = $scope.config[0].dias.martes[i].cita.substring($scope.config[0].dias.martes[i].cita.lastIndexOf('T')+1);
         	if (parseInt($scope.martes[i]) >= 12) {
-        		$scope.martes[i] += ' PM';
+        		$scope.martes[i] += ' pm';
         	}else{
-        		$scope.martes[i] += ' AM';
+        		$scope.martes[i] += ' am';
         	}
+        }
         }
 
           // miercoles
+          if ($scope.config[0].dias.miercoles != null) {
+            $scope.ver_mas_miercoles = true;
         for (var i = 0; i < $scope.config[0].dias.miercoles.length; i++) {
         	$scope.miercoles[i] = $scope.config[0].dias.miercoles[i].cita.substring($scope.config[0].dias.miercoles[i].cita.lastIndexOf('T')+1);
         	if (parseInt($scope.miercoles[i]) >= 12) {
-        		$scope.miercoles[i] += ' PM';
+        		$scope.miercoles[i] += ' pm';
         	}else{
-        		$scope.miercoles[i] += ' AM';
+        		$scope.miercoles[i] += ' am';
         	}
+        }
         }
 
         // jueves
+        if ($scope.config[0].dias.jueves != null) {
+            $scope.ver_mas_jueves = true;
         for (var i = 0; i < $scope.config[0].dias.jueves.length; i++) {
         	$scope.jueves[i] = $scope.config[0].dias.jueves[i].cita.substring($scope.config[0].dias.jueves[i].cita.lastIndexOf('T')+1);
         	if (parseInt($scope.jueves[i]) >= 12) {
-        		$scope.jueves[i] += ' PM';
+        		$scope.jueves[i] += ' pm';
         	}else{
-        		$scope.jueves[i] += ' AM';
+        		$scope.jueves[i] += ' am';
         	}
+        }
         }
 
         // viernes
+        if ($scope.config[0].dias.viernes != null) {
+            $scope.ver_mas_viernes = true;
         for (var i = 0; i < $scope.config[0].dias.viernes.length; i++) {
         	$scope.viernes[i] = $scope.config[0].dias.viernes[i].cita.substring($scope.config[0].dias.viernes[i].cita.lastIndexOf('T')+1);
         	if (parseInt($scope.viernes[i]) >= 12) {
-        		$scope.viernes[i] += ' PM';
+        		$scope.viernes[i] += ' pm';
         	}else{
-        		$scope.viernes[i] += ' AM';
+        		$scope.viernes[i] += ' am';
         	}
         }
-
-
-
+        }
 
 
         // aquí filtro los eventos para mostrar solo las fechas validas

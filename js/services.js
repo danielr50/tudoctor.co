@@ -22,15 +22,21 @@ app.factory("Horarios_doctor", function($firebaseArray) {
 
 
 // configuración doctor
-app.factory("getConfiguracion", function() {
-  var ref = new Firebase('https://tudoctor.firebaseio.com/configuracion/-K3WImkLwUuWhw3crPzT');
-  return ref;
-});
+// app.factory("getConfiguracion", function() {
+//   var ref = new Firebase('https://tudoctor.firebaseio.com/configuracion/-K3WImkLwUuWhw3crPzT');
+//   return ref;
+// });
 
 // citas
 app.factory('Citas',function($firebaseArray){
   var citas = new Firebase('https://tudoctor.firebaseio.com/citas');
   return $firebaseArray(citas);
+})
+
+// configuracion
+app.factory('Config',function($firebaseArray){
+  var ref = new Firebase('https://tudoctor.firebaseio.com/citas');
+  return $firebaseArray(ref);
 })
 
 // eventos
