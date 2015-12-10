@@ -877,7 +877,7 @@ width: 46%;
 @media(max-width:768px){
 
 #filtrarPor{
-	background: lightgrey;
+	background: whitesmoke;
 	border-radius:15px;
 	margin-left:10px;
 	margin-right:10px;
